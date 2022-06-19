@@ -1,3 +1,20 @@
+## Cara Instalasi Laravel
+clone project
+- masuk ke file htdoc(xampp) atau www(laragon) dengan menggunakan terminal
+- jika di menggunakan laragon "C:\laragon\www\bpnt" jika menggunakan Xampp "C:\Xampp\htdoc\bpnt"
+- tulis di terminal, "git clone link_github"
+- jika sudah selesai clone, tulis di terminal "composer install"
+
+setting database
+- masuk ke file project menggunakan code editor
+- ubah setting (.env.example)
+- ganti database="db_bpnt"
+
+jalankan server
+- masuk ke file project menggunakan terminal.
+- tulis di terminal, "php artisan serve"
+- lalu, masuk ke browser dengan localhost:8000 
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
