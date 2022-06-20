@@ -9,10 +9,10 @@
     <div class="block">
         <div class="block-header block-header-default">
             <h3 class="block-title">Data BPNT </h3>
-            @if (Auth::user()->role == "rw")
+            {{-- @if (Auth::user()->role == "rw")
                 <a href="{{Route('masyarakat.create')}}" type="button" class="btn btn-primary" >Tambah Data</a>
                 <a href="#" type="button" class="btn btn-info" >Cetak Data</a>
-            @endif
+            @endif --}}
         
         </div>
         <div class="block-content block-content-full">

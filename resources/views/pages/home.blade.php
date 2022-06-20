@@ -51,16 +51,28 @@
                                     <h1 class="h3 font-w700 mt-30 mb-10">Welcome to Your Dashboard</h1>
                                     <h2 class="h5 font-w400 text-muted mb-0">Please sign in</h2>
                                 </div>
+                                @if ($message = session('success'))
+                                <div class="alert alert-success">
+                                    <p>{{ $message }}</p>
+                                </div>
+                                @endif 
+                                @if ($message = session('fail'))
+                                <div class="alert alert-danger">
+                                    <p>{{ $message }}</p>
+                                </div>
+                                    
+                                @endif
                                 <!-- END Header -->
 
                                 <!-- Sign In Form -->
                                 <!-- jQuery Validation functionality is initialized with .js-validation-signin class in js/pages/op_auth_signin.min.js which was auto compiled from _es6/pages/op_auth_signin.js -->
                                 <!-- For more examples you can check out https://github.com/jzaefferer/jquery-validation -->
                                 <form class="js-validation-signin px-30" action="{{route('login.session')}}" method="post">
+                                    @csrf
                                     <div class="form-group row">
                                         <div class="col-12">
                                             <div class="form-material floating">
-                                                <input type="text" class="form-control" id="login-username" name="login-username">
+                                                <input type="text" class="form-control" id="login-username" name="username">
                                                 <label for="login-username">Username</label>
                                             </div>
                                         </div>
@@ -68,7 +80,7 @@
                                     <div class="form-group row">
                                         <div class="col-12">
                                             <div class="form-material floating">
-                                                <input type="password" class="form-control" id="login-password" name="login-password">
+                                                <input type="password" class="form-control" id="login-password" name="password">
                                                 <label for="login-password">Password</label>
                                             </div>
                                         </div>

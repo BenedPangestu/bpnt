@@ -50,7 +50,8 @@
                 </a>
                 <ul class="list-inline mt-10">
                     <li class="list-inline-item">
-                        <a class="link-effect text-dual-primary-dark font-size-xs font-w600 text-uppercase" href="#">Super Admin</a>
+                        <a class="link-effect text-dual-primary-dark font-size-xs font-w600 text-uppercase" href="#">{{Auth::user()->role}}</a>
+                        <p>{{Auth::user()->username}}</p>
                     </li>
                 </ul>
             </div>
@@ -66,21 +67,37 @@
                     <a href="{{url('admin/dashboard')}}" class="{{ Request::is('admin/dashboard')? "active":"" }}"><i class="fa fa-bar-chart"></i><span class="sidebar-mini-hide">Dashboard</span></a>
                 </li>
                 
-                
+                @if (auth::user()->role == "admin")
+                    <li>
+                        <a class="nav-submenu {{ Request::is('admin/masyarakat')? "active":"" }} {{ Request::is('admin/masyarakat')? "active":"" }} {{ Request::is('admin/masyarakat/smp')? "active":"" }}" data-toggle="nav-submenu" href="#"><i class="si si-trophy"></i><span class="sidebar-mini-hide">Data Masyarakat</span></a>
+                        <ul>
+                            <li>
+                                <a href="/admin/masyarakat" class="{{ Request::is('admin/masyarakat')? "active":"" }}">Daftar Calon BPNT/KPM</a>
+                            </li>
+                            <li>
+                                <a href="{{route('masyarakat.daftar')}}" class="{{ Request::is('admin/masyarakat')? "active":"" }}">Data Approve</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/admin/kecamatan" class="{{ Request::is('admin/kecamatan')? "active":"" }}"><i class="fa fa-bank"></i><span class="sidebar-mini-hide">Data RW</span></a>
+                    </li>
+                @else
                 <li>
-                    <a class="nav-submenu {{ Request::is('admin/sekolah/sd')? "active":"" }} {{ Request::is('admin/sekolah/sma')? "active":"" }} {{ Request::is('admin/sekolah/smp')? "active":"" }}" data-toggle="nav-submenu" href="#"><i class="si si-trophy"></i><span class="sidebar-mini-hide">Data Masyarakat</span></a>
+                    <a class="nav-submenu {{ Request::is('admin/masyarakat')? "active":"" }} {{ Request::is('admin/masyarakat')? "active":"" }} {{ Request::is('admin/masyarakat/smp')? "active":"" }}" data-toggle="nav-submenu" href="#"><i class="si si-trophy"></i><span class="sidebar-mini-hide">Data Masyarakat</span></a>
                     <ul>
                         <li>
                             <a href="/admin/masyarakat" class="{{ Request::is('admin/masyarakat')? "active":"" }}">Daftar Calon BPNT/KPM</a>
                         </li>
                         <li>
-                            <a href="{{route('sekolah.smp')}}" class="{{ Request::is('admin/sekolah/smp')? "active":"" }}">Data Approve</a>
+                            <a href="{{route('masyarakat.approve')}}" class="{{ Request::is('admin/masyarakat/approve')? "active":"" }}">Data Approve</a>
+                        </li>
+                        <li>
+                            <a href="{{route('masyarakat.pending')}}" class="{{ Request::is('admin/masyarakat/pending')? "active":"" }}">Data Pending</a>
                         </li>
                     </ul>
                 </li>
-                <li>
-                    <a href="/admin/kecamatan" class="{{ Request::is('admin/kecamatan')? "active":"" }}"><i class="fa fa-bank"></i><span class="sidebar-mini-hide">Data RW</span></a>
-                </li>
+                @endif
             </ul>
         </div>
         <!-- END Side Navigation -->

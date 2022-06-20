@@ -4,9 +4,14 @@ namespace App\Http\Controllers;
 
 use App\masyarakat;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MasyarakatController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index(Request $request)
     {
         $data = ([
@@ -21,10 +26,33 @@ class MasyarakatController extends Controller
         $data = ([
             'title'=> 'Masyarakat',
             'masyarakat' => masyarakat::all(),
+            'login' => Auth::user()
             // 'request' => $request->nama_masyarakat,
             // 'url' => $request->segment(3),
         ]);
         return view('pages/admin/masyarakat/index', $data);
+    }
+    public function dataApprove(Request $request)
+    {
+        $data = ([
+            'title'=> 'Masyarakat',
+            'masyarakat' => masyarakat::where('status', 'approve')->get(),
+            'login' => Auth::user()
+            // 'request' => $request->nama_masyarakat,
+            // 'url' => $request->segment(3),
+        ]);
+        return view('pages/admin/masyarakat/approve', $data);
+    }
+    public function dataPending(Request $request)
+    {
+        $data = ([
+            'title'=> 'Masyarakat',
+            'masyarakat' => masyarakat::where('status', 'pending')->get(),
+            'login' => Auth::user()
+            // 'request' => $request->nama_masyarakat,
+            // 'url' => $request->segment(3),
+        ]);
+        return view('pages/admin/masyarakat/pending', $data);
     }
     public function create(Request $request)
     {
@@ -53,7 +81,7 @@ class MasyarakatController extends Controller
             'tempat_lahir' => $request->tempat_lahir,
             'rt' => $request->rt,
             'rw' => $request->rw,
-            'nik' => $request->alamat,
+            'nik' => $request->nik,
             'no_kk' => $request->no_kk,
             'jenis_kelamin' => $request->jenis_kelamin,
             'pekerjaan' => $request->pekerjaan,

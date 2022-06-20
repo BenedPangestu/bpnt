@@ -24,7 +24,7 @@
             <div class="btn-group" role="group">
                 <button type="button" class="btn btn-rounded btn-dual-secondary" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fa fa-user d-sm-none"></i>
-                    <span class="d-none d-sm-inline-block">J. Smith</span>
+                    <span class="d-none d-sm-inline-block">{{auth::user()->username}}</span>
                     <i class="fa fa-angle-down ml-5"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right min-width-200" aria-labelledby="page-header-user-dropdown">
@@ -34,10 +34,16 @@
                     </a>
                    
 
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="op_auth_signin.html">
-                        <i class="si si-logout mr-5"></i> Sign Out
+                    {{-- <div class="dropdown-divider"></div> --}}
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
                     </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
                 </div>
             </div>
             <!-- END User Dropdown -->
