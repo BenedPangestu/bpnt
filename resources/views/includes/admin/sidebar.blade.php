@@ -75,12 +75,12 @@
                                 <a href="/admin/masyarakat" class="{{ Request::is('admin/masyarakat')? "active":"" }}">Daftar Calon BPNT/KPM</a>
                             </li>
                             <li>
-                                <a href="{{route('masyarakat.daftar')}}" class="{{ Request::is('admin/masyarakat')? "active":"" }}">Data Approve</a>
+                                <a href="{{route('masyarakat.approve')}}" class="{{ Request::is('admin/masyarakat/approve')? "active":"" }}">Data Approve</a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="/admin/kecamatan" class="{{ Request::is('admin/kecamatan')? "active":"" }}"><i class="fa fa-bank"></i><span class="sidebar-mini-hide">Data RW</span></a>
+                        <a href="{{route('user.rw')}}" class="{{ Request::is('admin/user/rw')? "active":"" }}"><i class="fa fa-bank"></i><span class="sidebar-mini-hide">Data RW</span></a>
                     </li>
                 @else
                 <li>

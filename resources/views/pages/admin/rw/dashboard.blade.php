@@ -8,11 +8,11 @@
     <!-- Dynamic Table Full -->
     <div class="block">
         <div class="block-header block-header-default">
-            <h3 class="block-title">Data BPNT </h3>
-            @if (Auth::user()->role == "rw")
-                <a href="{{Route('masyarakat.create')}}" type="button" class="btn btn-primary" >Tambah Data</a>
+            <h3 class="block-title">Data {{$title}}</h3>
+            {{-- @if (Auth::user()->role == "rw") --}}
+                <a href="{{Route('user.create')}}" type="button" class="btn btn-primary mr-2" >Tambah Data</a>
                 <a href="#" type="button" class="btn btn-info" >Cetak Data</a>
-            @endif
+            {{-- @endif --}}
         
         </div>
         <div class="block-content block-content-full">
@@ -32,43 +32,34 @@
             <thead>
                 <tr>
                     <!-- <th class="text-center" style="width: 100px;"><i class="si si-user"></i></th> -->
-                    <th>Nama</th>
-                    <th>Alamat</th>
-                    <th>TTL</th>
-                    <th>Nik</th>
-                    <th>No.kk</th>
-                    <th>Jenis Kelamin</th>
-                    <th>Pekerjaan</th>
-                    <th>Agama</th>
+                    <th>No</th>
+                    <th style="width: 40%;">Nama</th>
+                    <th>username</th>
+                    <th>Rw</th>
+                    <th>email</th>
                     <!-- <th>Status</th> -->
                     <th class="text-center" style="width: 100%;">Actions</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($masyarakat as $item)
+                <?php 
+                 $no = 1;    
+                ?>
+                @foreach ($user as $item)
                 <tr>
-                        
+                    <td>{{$no++}}</td>
                     <td>{{$item->nama}}</td>
-                    <td>{{$item->alamat}}</td>
-                    <td>{{$item->tempat_lahir}}, {{$item->tanggal_lahir}}</td>
-                    <td>{{$item->nik}}</td>
-                    <td>{{$item->no_kk}}</td>
-                    <td>{{$item->jenis_kelamin}}</td>
-                    <td>{{$item->pekerjaan}}</td>
-                    <td>{{$item->agama}}</td>
+                    <td>{{$item->username}}</td>
+                    <td>{{$item->ketua_rw}}</td>
+                    <td>{{$item->email}}</td>
                     <td class="text-center">
-                        {{-- <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Detail">
-                                <i class="fa fa-eye"></i>
-                            </button>
-                        </div> --}}
                         <div class="btn-group">
-                            <a href="{{route('masyarakat.edit', $item->id)}}" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="edit">
+                            <a href="{{route('user.edit', $item->id)}}" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="edit">
                                 <i class="fa fa-edit"></i>
                             </a>
                         </div>
                         <div class="btn-group">
-                            <form action="{{route('masyarakat.hapus', $item->id)}}" method="post">
+                            <form action="{{route('user.hapus', $item->id)}}" method="post">
                                 @csrf
                                 <button type="submit" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="hapus">
                                     <i class="fa fa-trash-o"></i>

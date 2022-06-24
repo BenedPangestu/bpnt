@@ -73,12 +73,6 @@
                                                     <input type="text" class="form-control" name="rt" placeholder="Enter a RT..">
                                                 </div>
                                             </div>
-                                                <div class="form-group row">
-                                                <label class="col-lg-4 col-form-label"  >rw <span class="text-danger">*</span></label>
-                                                <div class="col-lg-8">
-                                                    <input type="text" class="form-control" name="rw" placeholder="Enter a rw..">
-                                                </div>
-                                            </div>
                                             <div class="form-group row">
                                                 <label class="col-lg-4 col-form-label"  >nik <span class="text-danger">*</span></label>
                                                 <div class="col-lg-8">

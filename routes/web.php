@@ -28,19 +28,31 @@ Route::prefix('admin')
 
     Route::get('/detail/{id}', ['as'=> 'detail', 'uses'=>'DashboardController@detail']);
 
+    Route::get('/user/rw', ['as'=> 'user.rw', 'uses'=>'UserController@dataUser']);
+    Route::get('/user/rw/create', ['as'=> 'user.create', 'uses'=>'UserController@create']);
+    Route::post('/user/rw/store', ['as'=> 'user.store', 'uses'=>'UserController@store']);
+    Route::get('/user/rw/edit/{id}', ['as'=> 'user.edit', 'uses'=>'UserController@edit']);
+    Route::patch('/user/rw/update/{id}', ['as'=> 'user.update', 'uses'=>'UserController@update']);
+    Route::post('/user/rw/delete/{id}', ['as'=> 'user.hapus', 'uses'=>'UserController@hapus']);
     
     Route::get('/masyarakat', ['as'=> 'masyarakat.daftar', 'uses'=>'MasyarakatController@data']);
+    Route::get('/masyarakat/calon', ['as'=> 'masyarakat.calon', 'uses'=>'MasyarakatController@dataCalon']);
+    Route::get('/masyarakat/peserta', ['as'=> 'masyarakat.peserta', 'uses'=>'MasyarakatController@dataPeserta']);
     Route::get('/masyarakat/approve', ['as'=> 'masyarakat.approve', 'uses'=>'MasyarakatController@dataApprove']);
-    Route::get('/masyarakat/peding', ['as'=> 'masyarakat.pending', 'uses'=>'MasyarakatController@dataPending']);
+    Route::post('/masyarakat/app/{id}', ['as'=> 'masyarakat.app', 'uses'=>'MasyarakatController@appData']);
+    Route::post('/masyarakat/lolos/{id}', ['as'=> 'masyarakat.lolos', 'uses'=>'MasyarakatController@lolosData']);
+    Route::post('/masyarakat/peserta/{id}', ['as'=> 'masyarakat.ajukan', 'uses'=>'MasyarakatController@pesertaData']);
+    Route::get('/masyarakat/pending', ['as'=> 'masyarakat.pending', 'uses'=>'MasyarakatController@dataPending']);
     
     Route::get('/masyarakat/create', ['as'=> 'masyarakat.create', 'uses'=>'MasyarakatController@create']);
     Route::post('/masyarakat/store',['as' => 'masyarakat.store', 'uses' => 'MasyarakatController@store']);
-    
+    Route::get('/masyarakat/edit/{id}', ['as'=> 'masyarakat.edit', 'uses'=>'MasyarakatController@edit']);
+    Route::patch('/masyarakat/update/{id}', ['as'=> 'masyarakat.update', 'uses'=>'MasyarakatController@update']);
+    Route::post('/masyarakat/delete/{id}', ['as'=> 'masyarakat.hapus', 'uses'=>'MasyarakatController@hapus']);
     // Route::get('/sekolah/smp', ['as'=> 'sekolah.smp', 'uses'=>'App\Http\Controllers\SekolahController@sekolahSmp']);
     // Route::get('/sekolah/sma', ['as'=> 'sekolah.sma', 'uses'=>'App\Http\Controllers\SekolahController@sekolahSma']);
     // Route::get('/sekolah/smk', ['as'=> 'sekolah.smk', 'uses'=>'App\Http\Controllers\SekolahController@sekolahSmk']);
     // Route::get('/sekolah/edit/{id}', ['as'=> 'sekolah.edit', 'uses'=>'App\Http\Controllers\SekolahController@edit']);
-    // Route::patch('/sekolah/update/{id}', ['as'=> 'sekolah.update', 'uses'=>'App\Http\Controllers\SekolahController@update']);
     // Route::get('/sekolah/destroy/{id}', ['as'=> 'kecamatan.destroy', 'uses'=>'App\Http\Controllers\KecamatanController@destroy']);
         
 });

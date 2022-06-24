@@ -30,5 +30,6 @@ class masyarakat extends Model
         'bahan_masak',
         'fasilitas_wc',
         'lahan_tinggal',
+        'musdes',
     ];
 }
