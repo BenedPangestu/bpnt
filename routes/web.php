@@ -43,6 +43,7 @@ Route::prefix('admin')
     Route::post('/masyarakat/lolos/{id}', ['as'=> 'masyarakat.lolos', 'uses'=>'MasyarakatController@lolosData']);
     Route::post('/masyarakat/peserta/{id}', ['as'=> 'masyarakat.ajukan', 'uses'=>'MasyarakatController@pesertaData']);
     Route::get('/masyarakat/pending', ['as'=> 'masyarakat.pending', 'uses'=>'MasyarakatController@dataPending']);
+    Route::get('/masyarakat/cetak', ['as'=> 'masyarakat.cetak', 'uses'=>'MasyarakatController@dataCetak']);
     
     Route::get('/masyarakat/create', ['as'=> 'masyarakat.create', 'uses'=>'MasyarakatController@create']);
     Route::post('/masyarakat/store',['as' => 'masyarakat.store', 'uses' => 'MasyarakatController@store']);

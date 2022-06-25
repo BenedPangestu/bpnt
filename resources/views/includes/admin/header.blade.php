@@ -11,10 +11,6 @@
             <!-- END Toggle Sidebar -->
 
             <!-- Open Search Section -->
-            <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-            <button type="button" class="btn btn-circle btn-dual-secondary" data-toggle="layout" data-action="header_search_on">
-                <i class="fa fa-search"></i>
-            </button>
         </div>
         <!-- END Left Section -->
 
@@ -29,7 +25,7 @@
                 </button>
                 <div class="dropdown-menu dropdown-menu-right min-width-200" aria-labelledby="page-header-user-dropdown">
                     <h5 class="h6 text-center py-10 mb-5 border-b text-uppercase">User</h5>
-                    <a class="dropdown-item" href="be_pages_generic_profile.html">
+                    <a class="dropdown-item" href="#">
                         <i class="si si-user mr-5"></i> Profile
                     </a>
                    

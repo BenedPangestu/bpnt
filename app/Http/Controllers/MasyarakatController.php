@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\masyarakat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Barryvdh\DomPDF\Facade\Pdf;
 class MasyarakatController extends Controller
 {
     public function __construct()
@@ -15,11 +15,45 @@ class MasyarakatController extends Controller
     public function index(Request $request)
     {
         $data = ([
-            'title'=> 'kecamatan',
+            'title'=> 'masyarakat',
             'masyarakat' => masyarakat::all(),
             // 'request' => $request->nama,
         ]);
         return view('pages/admin/dashboard', $data);
+    }
+    public function dataCetak(Request $request)
+    {   
+        $url = url()->previous();
+        $pecah = explode('/', $url);
+        // dd($pecah);
+        if (count($pecah) <= 5) {
+            if (Auth::user()->role == "admin") {
+                $dataMas = masyarakat::where('status', 'peserta')->get();
+            }else {
+                $dataMas = masyarakat::where('rw', auth::user()->ketua_rw)->get();
+            }
+        } elseif (count($pecah) >= 5) {
+            if ($pecah['5'] == "approve") {
+                if (auth::user()->role == "admin") {
+                    $dataMas = masyarakat::where('status', 'approve')->Orwhere('status', 'lolos')->orderBy('status', 'desc')->get();
+                } else{
+                    $dataMas = masyarakat::where('status', 'approve')->where('rw', auth::user()->ketua_rw)->get();
+                }
+            } elseif ($pecah['5'] == "pending") {
+                if (auth::user()->role == "admin") {
+                    $dataMas = masyarakat::where('status', 'pending')->get();
+                } else {
+                    $dataMas = masyarakat::where(['status'=>'pending', 'rw' => auth::user()->ketua_rw])->get();
+                }
+            }
+        }
+        $data = ([
+            'title'=> 'masyarakat',
+            'masyarakat' => $dataMas,
+            // 'request' => $request->nama,
+        ]);
+        $pdf = PDF::loadview('layouts/cetak', ['masyarakat'=> $data['masyarakat']])->setPaper('a4', 'potrait');
+        return $pdf->stream('Masyarakat.pdf');
     }
     public function data(Request $request)
     {
@@ -42,7 +76,7 @@ class MasyarakatController extends Controller
     public function dataApprove(Request $request)
     {
         if (auth::user()->role == "admin") {
-            $dataMas = masyarakat::where('status', 'approve')->Orwhere('status', 'lolos')->get();
+            $dataMas = masyarakat::where('status', 'approve')->Orwhere('status', 'lolos')->orderBy('status', 'desc')->get();
             // $dataLolos = masyarakat::where('status', 'lolos')->get();
             // $dataMas = array_merge($dataApp, $dataLolos);
         } else {

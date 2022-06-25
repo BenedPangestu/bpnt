@@ -38,7 +38,7 @@
                     <th>Rw</th>
                     <th>email</th>
                     <!-- <th>Status</th> -->
-                    <th class="text-center" style="width: 100%;">Actions</th>
+                    <th class="text-center">Actions</th>
                 </tr>
             </thead>
             <tbody>

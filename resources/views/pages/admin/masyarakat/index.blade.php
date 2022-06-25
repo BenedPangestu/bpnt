@@ -11,8 +11,8 @@
             <h3 class="block-title">Data BPNT </h3>
             @if (Auth::user()->role == "rw")
                 <a href="{{Route('masyarakat.create')}}" type="button" class="btn btn-primary" >Tambah Data</a>
-                <a href="#" type="button" class="btn btn-info" >Cetak Data</a>
             @endif
+            <a href="{{Route('masyarakat.cetak')}}" type="button" class="btn btn-info" >Cetak Data</a>
         
         </div>
         <div class="block-content block-content-full">
@@ -29,56 +29,56 @@
             @endif
             <!-- DataTables functionality is initialized with .js-dataTable-full class in js/pages/be_tables_datatables.min.js which was auto compiled from _es6/pages/be_tables_datatables.js -->
             <table class="table table-bordered table-striped table-vcenter js-dataTable-full">
-            <thead>
-                <tr>
-                    <!-- <th class="text-center" style="width: 100px;"><i class="si si-user"></i></th> -->
-                    <th>Nama</th>
-                    <th>Alamat</th>
-                    <th>TTL</th>
-                    <th>Nik</th>
-                    <th>No.kk</th>
-                    <th>Jenis Kelamin</th>
-                    <th>Pekerjaan</th>
-                    <th>Agama</th>
-                    <!-- <th>Status</th> -->
-                    <th class="text-center" style="width: 100%;">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($masyarakat as $item)
-                <tr>
-                        
-                    <td>{{$item->nama}}</td>
-                    <td>{{$item->alamat}}</td>
-                    <td>{{$item->tempat_lahir}}, {{$item->tanggal_lahir}}</td>
-                    <td>{{$item->nik}}</td>
-                    <td>{{$item->no_kk}}</td>
-                    <td>{{$item->jenis_kelamin}}</td>
-                    <td>{{$item->pekerjaan}}</td>
-                    <td>{{$item->agama}}</td>
-                    <td class="text-center">
-                        {{-- <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Detail">
-                                <i class="fa fa-eye"></i>
-                            </button>
-                        </div> --}}
-                        <div class="btn-group">
-                            <a href="{{route('masyarakat.edit', $item->id)}}" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="edit">
-                                <i class="fa fa-edit"></i>
-                            </a>
-                        </div>
-                        <div class="btn-group">
-                            <form action="{{route('masyarakat.hapus', $item->id)}}" method="post">
-                                @csrf
-                                <button type="submit" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="hapus">
-                                    <i class="fa fa-trash-o"></i>
+                <thead>
+                    <tr>
+                        <!-- <th class="text-center" style="width: 100px;"><i class="si si-user"></i></th> -->
+                        <th>Nama</th>
+                        <th>Alamat</th>
+                        <th>TTL</th>
+                        <th>Nik</th>
+                        <th>No.kk</th>
+                        <th>Jenis Kelamin</th>
+                        <th>Pekerjaan</th>
+                        <th>Agama</th>
+                        <!-- <th>Status</th> -->
+                        <th class="text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($masyarakat as $item)
+                    <tr>
+                            
+                        <td>{{$item->nama}}</td>
+                        <td>{{$item->alamat}}</td>
+                        <td>{{$item->tempat_lahir}}, {{$item->tanggal_lahir}}</td>
+                        <td>{{$item->nik}}</td>
+                        <td>{{$item->no_kk}}</td>
+                        <td>{{$item->jenis_kelamin}}</td>
+                        <td>{{$item->pekerjaan}}</td>
+                        <td>{{$item->agama}}</td>
+                        <td class="text-center">
+                            {{-- <div class="btn-group">
+                                <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Detail">
+                                    <i class="fa fa-eye"></i>
                                 </button>
-                            </form>
-                        </div>
-                    </td>
-                    @endforeach
-                </tr>
-            </tbody>
+                            </div> --}}
+                            <div class="btn-group">
+                                <a href="{{route('masyarakat.edit', $item->id)}}" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="edit">
+                                    <i class="fa fa-edit"></i>
+                                </a>
+                            </div>
+                            <div class="btn-group">
+                                <form action="{{route('masyarakat.hapus', $item->id)}}" method="post">
+                                    @csrf
+                                    <button type="submit" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="hapus">
+                                        <i class="fa fa-trash-o"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                        @endforeach
+                    </tr>
+                </tbody>
             </table>
             
         </div>

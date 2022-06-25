@@ -9,10 +9,10 @@
     <div class="block">
         <div class="block-header block-header-default">
             <h3 class="block-title">Data BPNT </h3>
-            {{-- @if (Auth::user()->role == "rw")
+            @if (Auth::user()->role == "rw")
                 <a href="{{Route('masyarakat.create')}}" type="button" class="btn btn-primary" >Tambah Data</a>
-                <a href="#" type="button" class="btn btn-info" >Cetak Data</a>
-            @endif --}}
+            @endif
+            <a href="{{Route('masyarakat.cetak')}}" type="button" class="btn btn-info" >Cetak Data</a>
         
         </div>
         <div class="block-content block-content-full">
@@ -42,7 +42,7 @@
                     <th>Pekerjaan</th>
                     <th>status</th>
                     <!-- <th>Status</th> -->
-                    <th class="text-center" style="width: 100%;">Actions</th>
+                    <th class="text-center">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -67,15 +67,17 @@
                                 <i class="fa fa-eye"></i>
                             </button>
                         </div>
-                        @if ($item->status == "approve")
-                        <div class="btn-group">
-                            <form action="{{route('masyarakat.lolos', $item->id)}}" method="POST">
-                                @csrf
-                                <button type="submit" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Lolos">
-                                    <i class="fa fa-check"></i>
-                                </button>
-                            </form>
-                        </div>
+                        @if (auth::user()->role == 'admin')
+                            @if ($item->status == "approve")
+                            <div class="btn-group">
+                                <form action="{{route('masyarakat.lolos', $item->id)}}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Lolos">
+                                        <i class="fa fa-check"></i>
+                                    </button>
+                                </form>
+                            </div>
+                            @endif
                         @endif
                     </td>
                     @endforeach
