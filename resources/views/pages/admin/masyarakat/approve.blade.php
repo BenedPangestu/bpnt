@@ -70,6 +70,14 @@
                         @if (auth::user()->role == 'admin')
                             @if ($item->status == "approve")
                             <div class="btn-group">
+                                <form action="{{route('masyarakat.pes', $item->id)}}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Tolak">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </form>
+                            </div>
+                            <div class="btn-group">
                                 <form action="{{route('masyarakat.lolos', $item->id)}}" method="POST">
                                     @csrf
                                     <button type="submit" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Lolos">

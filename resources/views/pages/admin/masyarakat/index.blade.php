@@ -28,15 +28,16 @@
                 
             @endif
             <!-- DataTables functionality is initialized with .js-dataTable-full class in js/pages/be_tables_datatables.min.js which was auto compiled from _es6/pages/be_tables_datatables.js -->
-            <table class="table table-bordered table-striped table-vcenter js-dataTable-full">
+            <table class="table table-striped table-vcenter js-dataTable-full">
                 <thead>
                     <tr>
                         <!-- <th class="text-center" style="width: 100px;"><i class="si si-user"></i></th> -->
+                        <th>No</th>
+                        <th>Nik</th>
+                        <th>No.kk</th>
                         <th>Nama</th>
                         <th>Alamat</th>
                         <th>TTL</th>
-                        <th>Nik</th>
-                        <th>No.kk</th>
                         <th>Jenis Kelamin</th>
                         <th>Pekerjaan</th>
                         <th>Agama</th>
@@ -45,27 +46,33 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <?php 
+                        $no =1;    
+                    ?>
                     @foreach ($masyarakat as $item)
                     <tr>
-                            
+                        <td>{{$no++}}</td>
+                        <td>{{$item->nik}}</td>
+                        <td>{{$item->no_kk}}</td>
                         <td>{{$item->nama}}</td>
                         <td>{{$item->alamat}}</td>
                         <td>{{$item->tempat_lahir}}, {{$item->tanggal_lahir}}</td>
-                        <td>{{$item->nik}}</td>
-                        <td>{{$item->no_kk}}</td>
                         <td>{{$item->jenis_kelamin}}</td>
                         <td>{{$item->pekerjaan}}</td>
                         <td>{{$item->agama}}</td>
                         <td class="text-center">
-                            {{-- <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Detail">
-                                    <i class="fa fa-eye"></i>
-                                </button>
-                            </div> --}}
                             <div class="btn-group">
                                 <a href="{{route('masyarakat.edit', $item->id)}}" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="edit">
                                     <i class="fa fa-edit"></i>
                                 </a>
+                            </div>
+                            <div class="btn-group">
+                                <form action="{{route('masyarakat.pend', $item->id)}}" method="post">
+                                    @csrf
+                                    <button type="submit" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Pending">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </form>
                             </div>
                             <div class="btn-group">
                                 <form action="{{route('masyarakat.hapus', $item->id)}}" method="post">

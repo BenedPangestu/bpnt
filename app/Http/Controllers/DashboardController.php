@@ -11,7 +11,7 @@ class DashboardController extends Controller
     public function index(Request $request)
     {   
         if (auth::user()->role == "admin") {
-            $dataMas = masyarakat::all();
+            $dataMas = masyarakat::where('status', 'calon')->get();
         } else {
             $dataMas = masyarakat::where('rw', Auth::user()->ketua_rw)->get();
         }

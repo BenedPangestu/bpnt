@@ -182,10 +182,17 @@
                             </button>
                         </form>
                         @if (Auth::user()->role == "admin")
-                            <form action="{{route('masyarakat.app', $user->id)}}" method="POST">
-                                @csrf
-                                <button type="submit" class="btn btn-alt-info" data-dismiss="modal">Approve</button>
-                            </form>
+                            @if ($user->status == "calon")
+                                <form action="{{route('masyarakat.ajukan', $user->id)}}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-alt-info" data-dismiss="modal">Jadikan Peserta</button>
+                                </form>
+                            @else
+                                <form action="{{route('masyarakat.app', $user->id)}}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-alt-info" data-dismiss="modal">Approve</button>
+                                </form>
+                            @endif
                             {{-- <a href="{{route('masyarakat.app', $user->id)}}" class="btn btn-alt-secondary">app</a> --}}
                         @endif
                         </div>

@@ -58,7 +58,7 @@ class MasyarakatController extends Controller
     public function data(Request $request)
     {
         if (Auth::user()->role == "admin") {
-            $dataMas = masyarakat::where('status', 'peserta')->get();
+            $dataMas = masyarakat::where('status', 'peserta')->orderBy('id', 'desc')->get();
         }else {
             $dataMas = masyarakat::where('rw', auth::user()->ketua_rw)->get();
         }
@@ -100,11 +100,31 @@ class MasyarakatController extends Controller
 
         return redirect()->to('admin/masyarakat/approve')->with('success', 'Approve data succes');
     }
+    public function pendData($id)
+    {
+        $data = masyarakat::find($id);
+
+        $data->status = "pending";
+        $data->save();
+
+        return redirect()->to('admin/masyarakat')->with('success', 'Pending data succes');
+    }
+    public function pesData($id)
+    {
+        $data = masyarakat::find($id);
+
+        $data->status = "peserta";
+        $data->l_musdes = "1";
+        $data->save();
+
+        return redirect()->to('admin/masyarakat')->with('success', 'Pending data succes');
+    }
     public function pesertaData($id)
     {
         $data = masyarakat::find($id);
 
         $data->status = "peserta";
+        $data->musdes = "1";
         $data->save();
 
         return redirect()->to('admin/masyarakat')->with('success', 'Ajukan data succes');
@@ -175,7 +195,7 @@ class MasyarakatController extends Controller
             'bahan_masak' => $request->bahan_masak,
             'fasilitas_wc' => $request->fasilitas_wc,
             'lahan_tinggal' => $request->lahan_tinggal,
-            'status' => "peserta",
+            'status' => "calon",
             'rw' => auth::user()->ketua_rw,
             'musdes' => "0"
         ];

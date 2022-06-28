@@ -26,6 +26,15 @@ sebagai rw
 email = ajipang22@gmail.com
 password = 12345678
 
+Task yang belum :
+1. tambah status calon <img src="https://www.google.com/imgres?imgurl=https%3A%2F%2Fw7.pngwing.com%2Fpngs%2F521%2F723%2Fpng-transparent-check-mark-computer-icons-cheque-others-cdr-angle-text.png&imgrefurl=https%3A%2F%2Fwww.pngwing.com%2Fid%2Ffree-png-hwvup&tbnid=i1l7f6ae2zyMhM&vet=12ahUKEwjkh9XSmND4AhV0SHwKHZXKCVgQMygBegUIARDOAQ..i&docid=0HauxcRFe6jAXM&w=920&h=713&q=icon%20ceklis&client=opera&ved=2ahUKEwjkh9XSmND4AhV0SHwKHZXKCVgQMygBegUIARDOAQ" width="50">
+2. alur pending = nambah button
+3. tambah aksi approve di ui musdes
+4. tandai pernah musdes & lolos Musdes
+5. validasi data belum di input
+6. semua table nik dan no_kk di depan
+7. urutan data yang terbaru
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">

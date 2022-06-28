@@ -65,12 +65,11 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <!-- <th class="text-center" style="width: 100px;"><i class="si si-user"></i></th> -->
+                                <th>Nik</th>
+                                <th>No.kk</th>
                                 <th>Nama</th>
                                 <th style="width: 20%;">Alamat</th>
                                 <th style="width: 20%;">TTL</th>
-                                <th>Nik</th>
-                                <th>No.kk</th>
                                 <th style="width: 10%;">Jenis Kelamin</th>
                                 <th>Pekerjaan</th>
                                 <th>Agama</th>
@@ -83,11 +82,11 @@
                             @foreach ($masyarakat as $item)
                                 <tr>
                                     <td>{{$no++}}</td>
-                                    <td class="font-w600">{{$item->nama}}</td>
-                                    <td>{{$item->alamat}}</td>
-                                    <td>{{$item->tempat_lahir}}, {{$item->tanggal_lahir}}</td>
                                     <td>{{$item->nik}}</td>
                                     <td>{{$item->no_kk}}</td>
+                                    <td>{{$item->nama}}</td>
+                                    <td>{{$item->alamat}}</td>
+                                    <td>{{$item->tempat_lahir}}, {{$item->tanggal_lahir}}</td>
                                     <td>{{$item->jenis_kelamin}}</td>
                                     <td>{{$item->pekerjaan}}</td>
                                     <td>{{$item->agama}}</td>
@@ -99,6 +98,11 @@
                                             <button type="button" class="btnDetail btn btn-sm btn-secondary" data-id="{{$item->id}}" title="Detail">
                                                 <i class="fa fa-eye"></i>
                                             </button>
+                                        </div>
+                                        <div class="btn-group">
+                                            <a href="{{route('masyarakat.edit', $item->id)}}" class="btn btn-sm btn-secondary" title="Edit">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
                                         </div>
                                     </td>
                                 </tr>

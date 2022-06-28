@@ -31,5 +31,6 @@ class masyarakat extends Model
         'fasilitas_wc',
         'lahan_tinggal',
         'musdes',
+        'l_musdes',
     ];
 }
