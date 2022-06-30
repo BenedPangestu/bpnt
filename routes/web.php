@@ -40,6 +40,7 @@ Route::prefix('admin')
     Route::get('/masyarakat/peserta', ['as'=> 'masyarakat.peserta', 'uses'=>'MasyarakatController@dataPeserta']);
     Route::get('/masyarakat/approve', ['as'=> 'masyarakat.approve', 'uses'=>'MasyarakatController@dataApprove']);
     Route::post('/masyarakat/app/{id}', ['as'=> 'masyarakat.app', 'uses'=>'MasyarakatController@appData']);
+    Route::post('/masyarakat/calpes/{id}', ['as'=> 'masyarakat.calpes', 'uses'=>'MasyarakatController@calpesData']);
     Route::post('/masyarakat/pes/{id}', ['as'=> 'masyarakat.pes', 'uses'=>'MasyarakatController@pesData']);
     Route::post('/masyarakat/lolos/{id}', ['as'=> 'masyarakat.lolos', 'uses'=>'MasyarakatController@lolosData']);
     Route::post('/masyarakat/peserta/{id}', ['as'=> 'masyarakat.ajukan', 'uses'=>'MasyarakatController@pesertaData']);

@@ -10,7 +10,7 @@
         <div class="block-header block-header-default">
             <h3 class="block-title">Data BPNT </h3>
             @if (Auth::user()->role == "rw")
-                <a href="{{Route('masyarakat.create')}}" type="button" class="btn btn-primary" >Tambah Data</a>
+                {{-- <a href="{{Route('masyarakat.create')}}" type="button" class="btn btn-primary" >Tambah Data</a> --}}
             @endif
             <a href="{{Route('masyarakat.cetak')}}" type="button" class="btn btn-info" >Cetak Data</a>
         
@@ -33,11 +33,11 @@
                 <tr>
                     <!-- <th class="text-center" style="width: 100px;"><i class="si si-user"></i></th> -->
                     <th>no</th>
+                    <th>Nik</th>
+                    <th>No.kk</th>
                     <th>Nama</th>
                     <th>Alamat</th>
                     <th>TTL</th>
-                    <th>Nik</th>
-                    <th>No.kk</th>
                     <th>Jenis Kelamin</th>
                     <th>Pekerjaan</th>
                     <th>status</th>
@@ -52,11 +52,11 @@
                 @foreach ($masyarakat as $item)
                 <tr>
                     <td>{{$no++}}</td>
+                    <td>{{$item->nik}}</td>
+                    <td>{{$item->no_kk}}</td>
                     <td>{{$item->nama}}</td>
                     <td>{{$item->alamat}}</td>
                     <td>{{$item->tempat_lahir}}, {{$item->tanggal_lahir}}</td>
-                    <td>{{$item->nik}}</td>
-                    <td>{{$item->no_kk}}</td>
                     <td>{{$item->jenis_kelamin}}</td>
                     <td>{{$item->pekerjaan}}</td>
                     <td><span class="badge {{ $item->status == "lolos"? "badge-success":"badge-info" }}">{{$item->status}}</span></td>

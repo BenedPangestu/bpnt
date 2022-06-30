@@ -56,7 +56,7 @@
     <!-- FULL TABLE -->
         <div class="block">
             <div class="block-header block-header-default">
-            <h3 class="block-title">Data calon BPNT/KPM di Approve</h3>
+            <h3 class="block-title">Data calon BPNT/KPM</h3>
             </div>
             <div class="block-content">
                 <!-- <p>The first way to make a table responsive, is to wrap it with <code>&lt;div class=&quot;table-responsive&quot;&gt;&lt;/div&gt;</code>. This way the table will be horizontally scrollable and all data will be accessible on smaller screens (&lt; 768px).</p> -->

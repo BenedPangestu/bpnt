@@ -183,7 +183,7 @@
                         </form>
                         @if (Auth::user()->role == "admin")
                             @if ($user->status == "calon")
-                                <form action="{{route('masyarakat.ajukan', $user->id)}}" method="POST">
+                                <form action="{{route('masyarakat.calpes', $user->id)}}" method="POST">
                                     @csrf
                                     <button type="submit" class="btn btn-alt-info" data-dismiss="modal">Jadikan Peserta</button>
                                 </form>

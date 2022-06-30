@@ -60,7 +60,7 @@ class MasyarakatController extends Controller
         if (Auth::user()->role == "admin") {
             $dataMas = masyarakat::where('status', 'peserta')->orderBy('id', 'desc')->get();
         }else {
-            $dataMas = masyarakat::where('rw', auth::user()->ketua_rw)->get();
+            $dataMas = masyarakat::where('rw', auth::user()->ketua_rw)->where('status', 'calon')->orderBy('id', 'desc')->get();
         }
 
         $data = ([
@@ -80,7 +80,7 @@ class MasyarakatController extends Controller
             // $dataLolos = masyarakat::where('status', 'lolos')->get();
             // $dataMas = array_merge($dataApp, $dataLolos);
         } else {
-            $dataMas = masyarakat::where('status', 'approve')->where('rw', auth::user()->ketua_rw)->get();
+            $dataMas = masyarakat::where(['status'=> 'approve', 'rw' => auth::user()->ketua_rw])->Orwhere('status', 'lolos')->orderBy('status', 'desc')->get();
         }
         $data = ([
             'title'=> 'Masyarakat',
@@ -96,6 +96,7 @@ class MasyarakatController extends Controller
         $data = masyarakat::find($id);
 
         $data->status = "approve";
+        $data->musdes = "1";
         $data->save();
 
         return redirect()->to('admin/masyarakat/approve')->with('success', 'Approve data succes');
@@ -105,6 +106,15 @@ class MasyarakatController extends Controller
         $data = masyarakat::find($id);
 
         $data->status = "pending";
+        $data->save();
+
+        return redirect()->to('admin/masyarakat')->with('success', 'Pending data succes');
+    }
+    public function calpesData($id)
+    {
+        $data = masyarakat::find($id);
+
+        $data->status = "peserta";
         $data->save();
 
         return redirect()->to('admin/masyarakat')->with('success', 'Pending data succes');
@@ -166,15 +176,27 @@ class MasyarakatController extends Controller
     }
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'nama' => 'required',
-        //     'alamat' => 'required',
-        //     'tanggal_lahir' => 'required',
-        //     'jenjang' => 'required',
-        //     'image' => 'required|max:1024',
-        //     'alamat' => 'required',
-        //     'posisi_masyarakat' => 'required',
-        // ]);
+        $request->validate([
+            'nama' => 'required',
+            'alamat' => 'required',
+            'tempat_lahir' => 'required',
+            'tanggal_lahir' => 'required',
+            'rt' => 'required',
+            'nik' => 'required',
+            'no_kk' => 'required',
+            'jenis_kelamin' => 'required',
+            'pekerjaan' => 'required',
+            'agama' => 'required',
+            'luas_bangunan' => 'required',
+            'jenis_atap' => 'required',
+            'jenis_lantai' => 'required',
+            'jenis_dinding' => 'required',
+            'sumber_listrik' => 'required',
+            'sumber_air_minum' => 'required',
+            'bahan_masak' => 'required',
+            'fasilitas_wc' => 'required',
+            'lahan_tinggal' => 'required'
+        ]);
         $data = [
             'nama' => $request->nama,
             'alamat' => $request->alamat,
