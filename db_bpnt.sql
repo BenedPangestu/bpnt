@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 28, 2022 at 04:33 AM
+-- Generation Time: Jul 05, 2022 at 03:21 AM
 -- Server version: 5.7.33
 -- PHP Version: 7.4.19
 
@@ -105,7 +105,8 @@ CREATE TABLE `tbl_masyarakat` (
   `fasilitas_wc` varchar(20) DEFAULT NULL,
   `lahan_tinggal` varchar(20) DEFAULT NULL,
   `status` varchar(10) DEFAULT NULL,
-  `musdes` varchar(2) DEFAULT NULL,
+  `musdes` int(11) DEFAULT NULL,
+  `l_musdes` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `deleted_at` datetime DEFAULT NULL
@@ -115,13 +116,16 @@ CREATE TABLE `tbl_masyarakat` (
 -- Dumping data for table `tbl_masyarakat`
 --
 
-INSERT INTO `tbl_masyarakat` (`id`, `nama`, `alamat`, `tempat_lahir`, `tanggal_lahir`, `rt`, `rw`, `nik`, `no_kk`, `jenis_kelamin`, `pekerjaan`, `agama`, `luas_bangunan`, `jenis_atap`, `jenis_lantai`, `jenis_dinding`, `sumber_listrik`, `sumber_air`, `bahan_masak`, `fasilitas_wc`, `lahan_tinggal`, `status`, `musdes`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'maulana', 'dramaga 02', 'bogor', '2001-04-12', '2', NULL, '3201151204010002', '3213214213214212', 'laki-laki', 'Karyawan Swasta', 'islam', '3000', 'asbes', 'keramik', 'tembok', 'pln', 'sumur', 'gas', 'ada', 'sewa', 'approve', NULL, '2022-06-23 17:08:35', '2022-06-24 17:58:16', NULL),
-(2, 'Fajar', 'cibanteng no 7', 'bogor', '2001-04-12', '2', '1', '3201151204010002', '3213214213214212', 'laki-laki', 'Karyawan Swasta', 'islam', '3000', 'genteng', 'keramik', 'tembok', 'pln', 'sumur', 'gas', 'ada', 'sewa', 'lolos', NULL, '2022-06-23 17:15:00', '2022-06-24 17:33:41', NULL),
-(3, 'eko', 'babakan no 8', 'bogogr', '2001-02-02', '8', '1', '3201151204010002', '3213214213214212', 'laki-laki', 'Karyawan Swasta', 'islam', '3000', 'genteng', 'keramik', 'tembok', 'pln', 'sumur', 'gas', 'ada', 'milik sendiri', 'peserta', NULL, '2022-06-24 05:39:41', '2022-06-24 15:08:09', NULL),
-(4, 'Dr. Jackson Schmittr', 'cibanteng drmaga', 'bogor', '2022-12-31', '9', '1', '3201151204010002', '3213214213214212', 'laki-laki', 'Karyawan Swasta', 'islam', '3000', 'seng', 'kayu', 'kayu', 'pln', 'sumur', 'gas', 'ada', 'milik sendiri', 'peserta', NULL, '2022-06-24 05:47:07', '2022-06-24 18:07:44', NULL),
-(5, 'pange', 'ciampea warung borong 02', 'bogor', '2022-12-31', '2', '1', NULL, '3213214213214212', 'laki-laki', 'Karyawan Swasta', 'islam', '3000', 'genteng', 'keramik', 'tembok', 'pln', 'sumur', 'gas', 'ada', 'milik sendiri', 'approve', NULL, '2022-06-24 08:13:23', '2022-06-24 22:56:48', NULL),
-(6, 'dede', 'ciampea no2', 'bogor', '2022-12-31', '2', '1', '3201151204010002', '3213214213214212', 'laki-laki', 'Karyawan Swasta', 'islam', '3000', 'seng', 'keramik', 'tembok', 'pln', 'sumur', 'gas', 'ada', 'milik sendiri', 'peserta', NULL, '2022-06-24 08:14:59', '2022-06-24 08:14:59', NULL);
+INSERT INTO `tbl_masyarakat` (`id`, `nama`, `alamat`, `tempat_lahir`, `tanggal_lahir`, `rt`, `rw`, `nik`, `no_kk`, `jenis_kelamin`, `pekerjaan`, `agama`, `luas_bangunan`, `jenis_atap`, `jenis_lantai`, `jenis_dinding`, `sumber_listrik`, `sumber_air`, `bahan_masak`, `fasilitas_wc`, `lahan_tinggal`, `status`, `musdes`, `l_musdes`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'maulana', 'dramaga 02', 'bogor', '2001-04-12', '2', NULL, '3201151204010002', '3213214213214212', 'laki-laki', 'Karyawan Swasta', 'islam', '3000', 'asbes', 'keramik', 'tembok', 'pln', 'sumur', 'gas', 'ada', 'sewa', 'peserta', 1, 1, '2022-06-23 17:08:35', '2022-06-29 13:18:45', NULL),
+(2, 'Fajar', 'cibanteng no 7', 'bogor', '2001-04-12', '2', '1', '3201151204010002', '3213214213214212', 'laki-laki', 'Karyawan Swasta', 'islam', '3000', 'genteng', 'keramik', 'tembok', 'pln', 'sumur', 'gas', 'ada', 'sewa', 'pending', 1, 0, '2022-06-23 17:15:00', '2022-06-29 13:35:02', NULL),
+(3, 'eko', 'babakan no 8', 'bogogr', '2001-02-02', '8', '1', '3201151204010002', '3213214213214212', 'laki-laki', 'Karyawan Swasta', 'islam', '3000', 'genteng', 'keramik', 'tembok', 'pln', 'sumur', 'gas', 'ada', 'milik sendiri', 'lolos', 0, 1, '2022-06-24 05:39:41', '2022-06-29 13:34:34', NULL),
+(4, 'Dr. Jackson Schmittr', 'cibanteng drmaga', 'bogor', '2022-12-31', '9', '1', '3201151204010002', '3213214213214212', 'laki-laki', 'Karyawan Swasta', 'islam', '3000', 'seng', 'kayu', 'kayu', 'pln', 'sumur', 'gas', 'ada', 'milik sendiri', 'calon', 0, 0, '2022-06-24 05:47:07', '2022-06-29 20:08:07', NULL),
+(5, 'pange', 'ciampea warung borong 02', 'bogor', '2022-12-31', '2', '1', NULL, '3213214213214212', 'laki-laki', 'Karyawan Swasta', 'islam', '3000', 'genteng', 'keramik', 'tembok', 'pln', 'sumur', 'gas', 'ada', 'milik sendiri', 'calon', 0, 0, '2022-06-24 08:13:23', '2022-06-29 20:08:07', NULL),
+(6, 'dede', 'ciampea no2', 'bogor', '2022-12-31', '2', '1', '3201151204010002', '3213214213214212', 'laki-laki', 'Karyawan Swasta', 'islam', '3000', 'seng', 'keramik', 'tembok', 'pln', 'sumur', 'gas', 'ada', 'milik sendiri', 'calon', 0, 0, '2022-06-24 08:14:59', '2022-06-29 20:08:07', NULL),
+(7, 'alvin', 'dramaga no 6', 'new york', '2001-02-02', '3', '1', '3201923763475834', '3201923763475834', 'laki-laki', 'wirausaha', 'islam', '3000', 'genteng', 'keramik', 'tembok', 'pln', 'sumur', 'gas', 'tidak', 'milik sendiri', 'approve', 1, 1, '2022-06-28 11:39:40', '2022-06-29 13:41:01', NULL),
+(8, 'rafa', 'ciampea no 2', 'jogja', '2001-02-02', '7', '1', '3201923763475834', '3201923763475834', 'laki-laki', 'wirausaha', 'islam', '3000', 'genteng', 'keramik', 'tembok', 'pln', 'sumur', 'gas', 'ada', 'milik sendiri', 'calon', 0, 0, '2022-06-28 12:44:30', '2022-06-29 20:08:07', NULL),
+(9, 'roki', 'jakarta no 29', 'jakarta', '2001-12-31', '3', '1', '3201923763475834', '3201923763475834', 'laki-laki', 'wirausaha', 'islam', '3000', 'genteng', 'keramik', 'tembok', 'pln', 'sumur', 'gas', 'ada', 'milik sendiri', 'calon', 0, NULL, '2022-06-30 06:27:05', '2022-06-30 06:27:05', NULL);
 
 -- --------------------------------------------------------
 
@@ -212,7 +216,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `tbl_masyarakat`
 --
 ALTER TABLE `tbl_masyarakat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `users`
