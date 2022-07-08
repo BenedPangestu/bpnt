@@ -77,6 +77,9 @@
                             <li>
                                 <a href="{{route('masyarakat.approve')}}" class="{{ Request::is('admin/masyarakat/approve')? "active":"" }}">Data Approve</a>
                             </li>
+                            <li>
+                                <a href="{{route('masyarakat.history')}}" class="{{ Request::is('admin/masyarakat/history')? "active":"" }}">Data history</a>
+                            </li>
                         </ul>
                     </li>
                     <li>

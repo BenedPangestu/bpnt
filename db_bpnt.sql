@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 05, 2022 at 03:21 AM
+-- Generation Time: Jul 08, 2022 at 11:39 AM
 -- Server version: 5.7.33
 -- PHP Version: 7.4.19
 
@@ -79,6 +79,37 @@ INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_history_masyarakat`
+--
+
+CREATE TABLE `tbl_history_masyarakat` (
+  `id` int(11) NOT NULL,
+  `nik` varchar(50) DEFAULT NULL,
+  `id_masyarakat` int(11) DEFAULT NULL,
+  `status` varchar(10) NOT NULL,
+  `keterangan` varchar(50) DEFAULT NULL,
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `deleted_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_history_masyarakat`
+--
+
+INSERT INTO `tbl_history_masyarakat` (`id`, `nik`, `id_masyarakat`, `status`, `keterangan`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, '3201151204010002', 1, 'calon', 'data menjadi calon', '2022-07-08 13:09:19', '2022-07-08 13:09:19', NULL),
+(2, '3201151204010002', 1, 'peserta', 'data di jadikan peserta musdes', '2022-07-08 13:10:28', '2022-07-08 13:10:28', NULL),
+(3, '3201151204010002', 1, 'approve', 'lolos dalam musdes', '2022-07-08 13:11:12', '2022-07-08 13:11:12', NULL),
+(4, '3201151204010002', 1, 'lolos', 'data tercantum di kementrian', '2022-07-08 13:11:36', '2022-07-08 13:11:36', NULL),
+(5, '3201151204010002', 2, 'calon', 'data menjadi calon', '2022-07-08 13:28:50', '2022-07-08 13:28:50', NULL),
+(6, '3201151204010002', 2, 'peserta', 'data di jadikan peserta musdes', '2022-07-08 15:29:47', '2022-07-08 15:29:47', NULL),
+(7, '3201151204010002', 2, 'approve', 'lolos dalam musdes', '2022-07-08 15:29:56', '2022-07-08 15:29:56', NULL),
+(8, '3201151204010002', 2, 'peserta', 'data di jadikan peserta musdes', '2022-07-08 15:30:00', '2022-07-08 15:30:00', NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_masyarakat`
 --
 
@@ -117,15 +148,8 @@ CREATE TABLE `tbl_masyarakat` (
 --
 
 INSERT INTO `tbl_masyarakat` (`id`, `nama`, `alamat`, `tempat_lahir`, `tanggal_lahir`, `rt`, `rw`, `nik`, `no_kk`, `jenis_kelamin`, `pekerjaan`, `agama`, `luas_bangunan`, `jenis_atap`, `jenis_lantai`, `jenis_dinding`, `sumber_listrik`, `sumber_air`, `bahan_masak`, `fasilitas_wc`, `lahan_tinggal`, `status`, `musdes`, `l_musdes`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'maulana', 'dramaga 02', 'bogor', '2001-04-12', '2', NULL, '3201151204010002', '3213214213214212', 'laki-laki', 'Karyawan Swasta', 'islam', '3000', 'asbes', 'keramik', 'tembok', 'pln', 'sumur', 'gas', 'ada', 'sewa', 'peserta', 1, 1, '2022-06-23 17:08:35', '2022-06-29 13:18:45', NULL),
-(2, 'Fajar', 'cibanteng no 7', 'bogor', '2001-04-12', '2', '1', '3201151204010002', '3213214213214212', 'laki-laki', 'Karyawan Swasta', 'islam', '3000', 'genteng', 'keramik', 'tembok', 'pln', 'sumur', 'gas', 'ada', 'sewa', 'pending', 1, 0, '2022-06-23 17:15:00', '2022-06-29 13:35:02', NULL),
-(3, 'eko', 'babakan no 8', 'bogogr', '2001-02-02', '8', '1', '3201151204010002', '3213214213214212', 'laki-laki', 'Karyawan Swasta', 'islam', '3000', 'genteng', 'keramik', 'tembok', 'pln', 'sumur', 'gas', 'ada', 'milik sendiri', 'lolos', 0, 1, '2022-06-24 05:39:41', '2022-06-29 13:34:34', NULL),
-(4, 'Dr. Jackson Schmittr', 'cibanteng drmaga', 'bogor', '2022-12-31', '9', '1', '3201151204010002', '3213214213214212', 'laki-laki', 'Karyawan Swasta', 'islam', '3000', 'seng', 'kayu', 'kayu', 'pln', 'sumur', 'gas', 'ada', 'milik sendiri', 'calon', 0, 0, '2022-06-24 05:47:07', '2022-06-29 20:08:07', NULL),
-(5, 'pange', 'ciampea warung borong 02', 'bogor', '2022-12-31', '2', '1', NULL, '3213214213214212', 'laki-laki', 'Karyawan Swasta', 'islam', '3000', 'genteng', 'keramik', 'tembok', 'pln', 'sumur', 'gas', 'ada', 'milik sendiri', 'calon', 0, 0, '2022-06-24 08:13:23', '2022-06-29 20:08:07', NULL),
-(6, 'dede', 'ciampea no2', 'bogor', '2022-12-31', '2', '1', '3201151204010002', '3213214213214212', 'laki-laki', 'Karyawan Swasta', 'islam', '3000', 'seng', 'keramik', 'tembok', 'pln', 'sumur', 'gas', 'ada', 'milik sendiri', 'calon', 0, 0, '2022-06-24 08:14:59', '2022-06-29 20:08:07', NULL),
-(7, 'alvin', 'dramaga no 6', 'new york', '2001-02-02', '3', '1', '3201923763475834', '3201923763475834', 'laki-laki', 'wirausaha', 'islam', '3000', 'genteng', 'keramik', 'tembok', 'pln', 'sumur', 'gas', 'tidak', 'milik sendiri', 'approve', 1, 1, '2022-06-28 11:39:40', '2022-06-29 13:41:01', NULL),
-(8, 'rafa', 'ciampea no 2', 'jogja', '2001-02-02', '7', '1', '3201923763475834', '3201923763475834', 'laki-laki', 'wirausaha', 'islam', '3000', 'genteng', 'keramik', 'tembok', 'pln', 'sumur', 'gas', 'ada', 'milik sendiri', 'calon', 0, 0, '2022-06-28 12:44:30', '2022-06-29 20:08:07', NULL),
-(9, 'roki', 'jakarta no 29', 'jakarta', '2001-12-31', '3', '1', '3201923763475834', '3201923763475834', 'laki-laki', 'wirausaha', 'islam', '3000', 'genteng', 'keramik', 'tembok', 'pln', 'sumur', 'gas', 'ada', 'milik sendiri', 'calon', 0, NULL, '2022-06-30 06:27:05', '2022-06-30 06:27:05', NULL);
+(1, 'AJI PANGESTU', 'babakan dramaga no 8', 'bogor', '2001-02-02', '3', '1', '3201151204010002', '3213214213214212', 'laki-laki', 'Karyawan Swasta', 'islam', '3000', 'genteng', 'keramik', 'tembok', 'pln', 'sumur', 'gas', 'ada', 'milik sendiri', 'lolos', 1, NULL, '2022-07-08 13:09:19', '2022-07-08 13:11:36', NULL),
+(2, 'Fajar', 'babaakn', 'bogor', '2022-12-02', '2', '1', '3201151204010002', '3213214213214212', 'laki-laki', 'Karyawan Swasta', 'islam', '3000', 'genteng', 'keramik', 'tembok', 'pln', 'sumur', 'gas', 'ada', 'milik sendiri', 'peserta', 1, 1, '2022-07-08 13:28:50', '2022-07-08 15:30:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -159,7 +183,8 @@ INSERT INTO `users` (`id`, `nama`, `role`, `agama`, `username`, `email`, `email_
 (1, 'aji pangestu', 'rw', NULL, 'ipang', 'ajipang22@gmail.com', NULL, '$2y$10$x8.HlwxNqpqQWVyX7ggbrunp/IqN5.KJsUCKsocb2kOEiFc3bA7bO', NULL, NULL, NULL, '1', NULL, NULL, NULL),
 (2, 'Aji Pangestu', 'admin', NULL, 'Apang', 'ajipangestu4211@gmail.com', NULL, '$2y$10$x8.HlwxNqpqQWVyX7ggbrunp/IqN5.KJsUCKsocb2kOEiFc3bA7bO', NULL, NULL, NULL, '', NULL, '2022-06-20 00:09:39', '2022-06-20 00:09:39'),
 (4, 'ardi', 'rw', 'islam', 'ard', 'ardi@gmail.com', NULL, '$2y$10$x8.HlwxNqpqQWVyX7ggbrunp/IqN5.KJsUCKsocb2kOEiFc3bA7bO', 'islam', 'dramaga babakan 02', '081245238453', '2', NULL, '2022-06-23 10:41:19', NULL),
-(5, 'Fajar', 'rw', 'islam', 'admin', 'admin@gmail.com', NULL, '25d55ad283aa400af464c76d713c07ad', 'laki-laki', 'babakan dramaga 4', '083234232452345', '4', NULL, '2022-06-23 04:25:05', '2022-06-23 04:25:05');
+(5, 'Fajar', 'rw', 'islam', 'admin', 'admin@gmail.com', NULL, '25d55ad283aa400af464c76d713c07ad', 'laki-laki', 'babakan dramaga 4', '083234232452345', '4', NULL, '2022-06-23 04:25:05', '2022-06-23 04:25:05'),
+(6, 'apang pangestu', 'rw', 'islam', 'apang', 'apang@gmail.com', NULL, '25d55ad283aa400af464c76d713c07ad', 'laki-laki', NULL, NULL, '3', NULL, '2022-07-05 07:45:54', '2022-07-05 07:45:54');
 
 --
 -- Indexes for dumped tables
@@ -182,6 +207,12 @@ ALTER TABLE `migrations`
 --
 ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
+
+--
+-- Indexes for table `tbl_history_masyarakat`
+--
+ALTER TABLE `tbl_history_masyarakat`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tbl_masyarakat`
@@ -213,16 +244,22 @@ ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `tbl_history_masyarakat`
+--
+ALTER TABLE `tbl_history_masyarakat`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT for table `tbl_masyarakat`
 --
 ALTER TABLE `tbl_masyarakat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

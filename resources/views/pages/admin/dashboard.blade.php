@@ -15,7 +15,7 @@
                         <i class="si si-wallet fa-3x text-body-bg-dark"></i>
                     </div>
                     <div class="font-size-sm font-w600 text-uppercase text-muted">Jumlah Data</div>
-                    <div class="font-size-h4">{{count($masyarakat)}}</div>
+                    <div class="font-size-h4">{{count($masyarakatJumlah)}}</div>
                 </div>
             </a>
         </div>

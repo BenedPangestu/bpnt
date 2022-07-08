@@ -33,4 +33,9 @@ class masyarakat extends Model
         'musdes',
         'l_musdes',
     ];
+    
+    public function history()
+    {
+        return $this->hasMany(HistoryMasyarakat::class, 'id_masyarakat', 'id');
+    }
 }

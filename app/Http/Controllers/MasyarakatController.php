@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\HistoryMasyarakat;
 use App\masyarakat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Carbon;
 class MasyarakatController extends Controller
 {
     public function __construct()
@@ -73,6 +75,35 @@ class MasyarakatController extends Controller
         // dd($data);
         return view('pages/admin/masyarakat/index', $data);
     }
+    public function dataHistory()
+    {
+        if (Auth::user()->role == "admin") {
+            $dataMas = HistoryMasyarakat::with('masyarakat')->get();
+            $data = masyarakat::all();
+        }else {
+            $dataMas = masyarakat::where('rw', auth::user()->ketua_rw)->where('status', 'calon')->orderBy('id', 'desc')->get();
+            $data = masyarakat::all();
+            
+        }
+
+        $data = ([
+            'title'=> 'Masyarakat',
+            'history' => $dataMas,
+            'masyarakat' => $data,
+            'login' => Auth::user(),
+            'tanggal' => Carbon::parse($dataMas[1]->created_at)->translatedFormat('l, d  F Y') ,
+            // 'url' => $request->segment(3),
+        ]);
+        // dd($data);
+
+        return view('pages/admin/masyarakat/history', $data);
+    }
+    public function historyData($id)
+    {
+        # code...
+        $dataMas = HistoryMasyarakat::with('masyarakat')->where('id_masyarakat', $id)->get();
+        return json_encode($dataMas);
+    }
     public function dataApprove(Request $request)
     {
         if (auth::user()->role == "admin") {
@@ -98,6 +129,14 @@ class MasyarakatController extends Controller
         $data->status = "approve";
         $data->musdes = "1";
         $data->save();
+        
+        $dataHistory = [
+            'id_masyarakat' => $data['id'],
+            'nik' => $data['nik'],
+            'keterangan' => 'lolos dalam musdes',
+            'status' => $data['status'],
+        ];
+        HistoryMasyarakat::create($dataHistory);
 
         return redirect()->to('admin/masyarakat/approve')->with('success', 'Approve data succes');
     }
@@ -107,6 +146,14 @@ class MasyarakatController extends Controller
 
         $data->status = "pending";
         $data->save();
+        
+        $dataHistory = [
+            'id_masyarakat' => $data['id'],
+            'nik' => $data['nik'],
+            'keterangan' => 'data di kembalikan ke rw',
+            'status' => $data['status'],
+        ];
+        HistoryMasyarakat::create($dataHistory);
 
         return redirect()->to('admin/masyarakat')->with('success', 'Pending data succes');
     }
@@ -116,6 +163,13 @@ class MasyarakatController extends Controller
 
         $data->status = "peserta";
         $data->save();
+        $dataHistory = [
+            'id_masyarakat' => $data['id'],
+            'nik' => $data['nik'],
+            'keterangan' => 'data di jadikan peserta musdes',
+            'status' => $data['status'],
+        ];
+        HistoryMasyarakat::create($dataHistory);
 
         return redirect()->to('admin/masyarakat')->with('success', 'Pending data succes');
     }
@@ -126,6 +180,14 @@ class MasyarakatController extends Controller
         $data->status = "peserta";
         $data->l_musdes = "1";
         $data->save();
+        
+        $dataHistory = [
+            'id_masyarakat' => $data['id'],
+            'nik' => $data['nik'],
+            'keterangan' => 'data di jadikan peserta musdes',
+            'status' => $data['status'],
+        ];
+        HistoryMasyarakat::create($dataHistory);
 
         return redirect()->to('admin/masyarakat')->with('success', 'Pending data succes');
     }
@@ -136,7 +198,14 @@ class MasyarakatController extends Controller
         $data->status = "peserta";
         $data->musdes = "1";
         $data->save();
-
+        $dataHistory = [
+            'id_masyarakat' => $data['id'],
+            'nik' => $data['nik'],
+            'keterangan' => 'data di jadikan peserta musdes',
+            'status' => $data['status'],
+        ];
+        HistoryMasyarakat::create($dataHistory);
+        
         return redirect()->to('admin/masyarakat')->with('success', 'Ajukan data succes');
     }
     public function lolosData($id)
@@ -145,6 +214,13 @@ class MasyarakatController extends Controller
 
         $data->status = "lolos";
         $data->save();
+        $dataHistory = [
+            'id_masyarakat' => $data['id'],
+            'nik' => $data['nik'],
+            'keterangan' => 'data tercantum di kementrian',
+            'status' => $data['status'],
+        ];
+        HistoryMasyarakat::create($dataHistory);
         // dd($data);
         return redirect()->to('admin/masyarakat/approve')->with('success', 'Lolos data succes');
     }
@@ -222,13 +298,24 @@ class MasyarakatController extends Controller
             'musdes' => "0"
         ];
         // dd($data);
-        masyarakat::create($data);
-        return redirect()->to('admin/masyarakat')->with('success', 'Tambah data succes');
+        $create = masyarakat::create($data);
+        $dataHistory = [
+            'id_masyarakat' => $create['id'],
+            'nik' => $create['nik'],
+            'keterangan' => 'data menjadi calon',
+            'status' => $create['status'],
+        ];
+        HistoryMasyarakat::create($dataHistory);
+        if ($create) {
+            return redirect()->to('admin/masyarakat')->with('success', 'Tambah data succes');
+        } else {
+            return redirect()->to('admin/masyarakat')->with('fail', 'Tambah data gagal');
+        }
     }
     public function edit($id)
     {
         $data = ([
-            'title' => 'Ketua Rw',
+            'title' => 'Masyarakat',
             'user' => masyarakat::find($id),
         ]);
 
@@ -239,20 +326,30 @@ class MasyarakatController extends Controller
         $data = masyarakat::find($id);
 
         $data->nama = $request->nama;
-        $data->agama = $request->agama;
-        $data->username = $request->username;
-        $data->email = $request->email;
-        $data->jenis_kelamin = $request->jenis_kelamin;
         $data->alamat = $request->alamat;
-        $data->no_hp = $request->no_hp;
-        $data->ketua_rw = $request->ketua_rw;
-
+        $data->tempat_lahir = $request->tempat_lahir;
+        $data->tanggal_lahir = $request->tanggal_lahir;
+        $data->rt = $request->rt;
+        $data->nik = $request->nik;
+        $data->no_kk = $request->no_kk;
+        $data->jenis_kelamin = $request->jenis_kelamin;
+        $data->pekerjaan = $request->pekerjaan;
+        $data->agama = $request->agama;
+        $data->luas_bangunan = $request->luas_bangunan;
+        $data->jenis_atap = $request->jenis_atap;
+        $data->jenis_lantai = $request->jenis_lantai;
+        $data->jenis_dinding = $request->jenis_dinding;
+        $data->sumber_listrik = $request->sumber_listrik;
+        $data->sumber_air = $request->sumber_air_minum;
+        $data->bahan_masak = $request->bahan_masak;
+        $data->fasilitas_wc = $request->fasilitas_wc;
+        $data->lahan_tinggal = $request->lahan_tinggal;
         // dd($data);
         $update = $data->save();
         if ($update) {
-            return redirect()->to('admin/user/rw')->with('success', 'Update data succes');
+            return redirect()->to('admin/dashboard')->with('success', 'Update data succes');
         }
-        return redirect()->to('admin/user/rw')->with('fail', 'Update data gagal!');
+        return redirect()->to('admin/dashboard')->with('fail', 'Update data gagal!');
         // $data->nama = $request->nama;
         // $data->nama = $request->nama;
     }

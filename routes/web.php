@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->to('login');
 });
 // Route::get('/login', 'AuthController@index');
 // Route::post('/login/auth', ['as'=> 'login.session', 'uses'=>'AuthController@login']);
@@ -27,6 +27,7 @@ Route::prefix('admin')
     Route::get('/dashboard', ['as'=> 'dashboard', 'uses'=>'DashboardController@index']);
 
     Route::get('/detail/{id}', ['as'=> 'detail', 'uses'=>'DashboardController@detail']);
+    Route::get('/detail/history/{id}', ['as'=> 'detail.history', 'uses'=>'MasyarakatController@historyData']);
 
     Route::get('/user/rw', ['as'=> 'user.rw', 'uses'=>'UserController@dataUser']);
     Route::get('/user/rw/create', ['as'=> 'user.create', 'uses'=>'UserController@create']);
@@ -37,6 +38,7 @@ Route::prefix('admin')
     
     Route::get('/masyarakat', ['as'=> 'masyarakat.daftar', 'uses'=>'MasyarakatController@data']);
     Route::get('/masyarakat/calon', ['as'=> 'masyarakat.calon', 'uses'=>'MasyarakatController@dataCalon']);
+    Route::get('/masyarakat/history', ['as'=> 'masyarakat.history', 'uses'=>'MasyarakatController@dataHistory']);
     Route::get('/masyarakat/peserta', ['as'=> 'masyarakat.peserta', 'uses'=>'MasyarakatController@dataPeserta']);
     Route::get('/masyarakat/approve', ['as'=> 'masyarakat.approve', 'uses'=>'MasyarakatController@dataApprove']);
     Route::post('/masyarakat/app/{id}', ['as'=> 'masyarakat.app', 'uses'=>'MasyarakatController@appData']);

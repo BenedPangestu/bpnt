@@ -91,7 +91,7 @@
                         <div class="form-group row">
                             <label class="col-lg-4 col-form-label"  >Jenis Atap <span class="text-danger">*</span></label>
                             <div class="col-lg-8">
-                                <select class="js-select2 form-control" id="val-select2" name="jenis_atap" style="width: 100%;" data-placeholder="Choose one..">
+                                <select class="js-select2 form-control" id="val-select1" name="jenis_atap" style="width: 100%;" data-placeholder="Choose one..">
                                     <option selected value="{{$user->jenis_atap}}">{{$user->jenis_atap}}</option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
                                     <option value="genteng">genteng</option>
                                     <option value="seng">seng</option>
@@ -115,7 +115,7 @@
                         <div class="form-group row">
                             <label class="col-lg-4 col-form-label"  >jenis_dinding <span class="text-danger">*</span></label>
                             <div class="col-lg-8">
-                                <select class="js-select2 form-control" id="val-select2" name="jenis_dinding" style="width: 100%;" data-placeholder="Choose one..">
+                                <select class="js-select2 form-control" id="val-select3" name="jenis_dinding" style="width: 100%;" data-placeholder="Choose one..">
                                     <option selected value="{{$user->jenis_dinding}}">{{$user->jenis_dinding}}</option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
                                     <option value="tembok">tembok</option>
                                     <option value="kayu">kayu</option>
@@ -126,7 +126,7 @@
                         <div class="form-group row">
                             <label class="col-lg-4 col-form-label"  >sumber_listrik <span class="text-danger">*</span></label>
                             <div class="col-lg-8">
-                                <select class="js-select2 form-control" id="val-select2" name="sumber_listrik" style="width: 100%;" data-placeholder="Choose one..">
+                                <select class="js-select2 form-control" id="val-select4" name="sumber_listrik" style="width: 100%;" data-placeholder="Choose one..">
                                     <option selected value="{{$user->sumber_listrik}}">{{$user->sumber_listrik}}</option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
                                     <option value="pln">pln</option>
                                     <option value="non_pln">non_pln</option>
@@ -136,7 +136,7 @@
                         <div class="form-group row">
                             <label class="col-lg-4 col-form-label"  >sumber_air_minum <span class="text-danger">*</span></label>
                             <div class="col-lg-8">
-                                <select class="js-select2 form-control" id="val-select2" name="sumber_air_minum" style="width: 100%;" data-placeholder="Choose one..">
+                                <select class="js-select2 form-control" id="val-select5" name="sumber_air_minum" style="width: 100%;" data-placeholder="Choose one..">
                                     <option selected value="{{$user->sumber_air}}">{{$user->sumber_air}}</option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
                                     <option value="sumur">sumur</option>
                                     <option value="pam">pam</option>
@@ -146,7 +146,7 @@
                         <div class="form-group row">
                             <label class="col-lg-4 col-form-label"  >bahan_masak <span class="text-danger">*</span></label>
                             <div class="col-lg-8">
-                                <select class="js-select2 form-control" id="val-select2" name="bahan_masak" style="width: 100%;" data-placeholder="Choose one..">
+                                <select class="js-select2 form-control" id="val-select6" name="bahan_masak" style="width: 100%;" data-placeholder="Choose one..">
                                     <option selected value="{{$user->bahan_masak}}">{{$user->bahan_masak}}</option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
                                     <option value="gas">gas</option>
                                     <option value="kayu">kayu</option>
@@ -158,7 +158,7 @@
                         <div class="form-group row">
                             <label class="col-lg-4 col-form-label"  >fasilitas_wc <span class="text-danger">*</span></label>
                             <div class="col-lg-8">
-                                <select class="js-select2 form-control" id="val-select2" name="fasilitas_wc" style="width: 100%;" data-placeholder="Choose one..">
+                                <select class="js-select2 form-control" id="val-select7" name="fasilitas_wc" style="width: 100%;" data-placeholder="Choose one..">
                                     <option selected value="{{$user->fasilitas_wc}}">{{$user->fasilitas_wc}}</option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
                                     <option value="ada">ada</option>
                                     <option value="tidak">tidak</option>
@@ -168,7 +168,7 @@
                         <div class="form-group row">
                             <label class="col-lg-4 col-form-label"  >lahan_tinggal <span class="text-danger">*</span></label>
                             <div class="col-lg-8">
-                                <select class="js-select2 form-control" id="val-select2" name="lahan_tinggal" style="width: 100%;" data-placeholder="Choose one..">
+                                <select class="js-select2 form-control" id="val-select8" name="lahan_tinggal" style="width: 100%;" data-placeholder="Choose one..">
                                     <option selected value="{{$user->lahan_tinggal}}">{{$user->lahan_tinggal}}</option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
                                     <option value="sewa">sewa</option>
                                     <option value="milik sendiri">milik sendiri</option>

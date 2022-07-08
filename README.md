@@ -35,10 +35,13 @@ Task yang belum :
 6. semua table nik dan no_kk di depan ✔
 7. urutan data yang terbaru ✔
 
+Task Tambahan:
+1. membuat alur history pada setiap status ✔
+
 Task finishing :
-1. jumlah pada Dashboard
-2. label pada form data masyarakat
-3. hapus forgot password
+1. jumlah pada Dashboard ✔
+2. label pada form data masyarakat ✔
+3. hapus forgot password ✔
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
