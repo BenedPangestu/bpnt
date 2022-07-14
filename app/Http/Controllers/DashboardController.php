@@ -17,7 +17,7 @@ class DashboardController extends Controller
             $dataTolak = masyarakat::where('status', 'tolak')->get();
             $dataJum = masyarakat::all();
         } else {
-            $dataMas = masyarakat::where('rw', Auth::user()->ketua_rw)->orderBy('id', 'desc')->get();
+            $dataMas = masyarakat::where(['rw' => Auth::user()->ketua_rw, 'status' => 'calon'])->orderBy('id', 'desc')->get();
             $dataApp = masyarakat::where(['rw' => Auth::user()->ketua_rw, 'status' => 'approve'])->get();
             $dataPend = masyarakat::where(['rw' => Auth::user()->ketua_rw, 'status' => 'pending'])->get();
             $dataTolak = masyarakat::where(['rw' => Auth::user()->ketua_rw, 'status' => 'tolak'])->get();

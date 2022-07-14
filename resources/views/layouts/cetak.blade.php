@@ -41,7 +41,7 @@
 </style>
 <body class="">
     <section class="">
-        <h1>LAPORAN DATA KMP</h1>
+        <h1>LAPORAN DATA KPM</h1>
         <p>
             peserta = peserta musdes <br>
             approve = hasil dari musdes <br>
@@ -74,7 +74,7 @@
                     <td>{{$item->nama}}</td>
                     <td>{{$item->alamat}}</td>
                     <td>{{$item->tempat_lahir}}, {{$item->tanggal_lahir}}</td>
-                    <td>..{{Str::substr($item->nik, 11, 5)}}</td>
+                    <td>{{$item->nik}}</td>
                     {{-- <td>{{$item->no_kk}}</td> --}}
                     <td>{{$item->jenis_kelamin}}</td>
                     <td>{{$item->pekerjaan}}</td>

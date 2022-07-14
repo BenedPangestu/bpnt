@@ -12,7 +12,7 @@
             @if (Auth::user()->role == "rw")
                 {{-- <a href="{{Route('masyarakat.create')}}" type="button" class="btn btn-primary" >Tambah Data</a> --}}
             @endif
-            <a href="{{Route('masyarakat.cetak')}}" type="button" class="btn btn-info" >Cetak Data</a>
+            {{-- <a href="{{Route('masyarakat.cetak')}}" type="button" class="btn btn-info" >Cetak Data</a> --}}
         
         </div>
         <div class="block-content block-content-full">
@@ -48,29 +48,50 @@
                 <tr>
                     <td>{{$no++}}</td>
                     <td>{{$item->nik}}</td>
-                    {{-- @foreach($item->masyarakat as $key) --}}
-                    {{-- @endforeach --}}
                     <td>{{$item->nama}}</td>
-                    {{-- <td>{{$item->alamat}}</td> --}}
-                    {{-- <td>{{$item->tempat_lahir}}, {{$item->tanggal_lahir}}</td> --}}
                     <td>{{$item->created_at->isoFormat('dddd, D MMMM Y')}}</td>
-                    {{-- <td>{{$item->jenis_kelamin}}</td> --}}
-                    {{-- <td>{{$item->pekerjaan}}</td> --}}
-                    {{-- <td><span class="badge {{ $item->status == "lolos"? "badge-success":"badge-info" }}">{{$item->status}}</span></td> --}}
-                    
                     <td class="text-center">
                         <div class="btn-group">
-                            <button type="button" class="btn btnDetail btn-sm btn-secondary" data-id="{{$item->id}}" data-toggle="tooltip" title="Detail">
-                                <i class="fa fa-eye"></i>
-                            </button>
+                            <button type="button" class="btn btnDetail btn-alt-info" data-toggle="modal" data-id="{{$item->id}}" data-target="#modal-large"><i class="fa fa-eye"></i></button>
                         </div>
                     </td>
                     @endforeach
                 </tr>
             </tbody>
             </table>
-            
-            <div id="dataModal" class="modal fade">  
+            <!-- Large Modal -->
+            <div class="modal" id="modal-large" tabindex="-1" role="dialog" aria-labelledby="modal-large" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="block block-themed block-transparent mb-0">
+                            <div class="block-header bg-primary-dark">
+                                <h3 class="block-title">Detail Data History</h3>
+                                <div class="block-options">
+                                    <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
+                                        <i class="si si-close"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="block-content">
+                                <table id="history" class="history">
+                                    <thead>
+                                        <tr>
+                                            <td style="width: 15%">tanggal</td>
+                                            <td style="width: 15%">status</td>
+                                            <td style="width: 15%">keterangan</td>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-alt-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END Large Modal -->
+            {{-- <div id="dataModal" class="modal fade">  
                 <div class="modal-dialog">  
                      <div class="modal-content">  
                             <div class="modal-header">  
@@ -80,16 +101,11 @@
                             <table id="history" class="history">
                                 <thead>
                                     <tr>
+                                        <td style="width: 15%">tanggal</td>
                                         <td style="width: 15%">status</td>
                                         <td style="width: 15%">keterangan</td>
-                                        <td style="width: 15%">tanggal</td>
                                     </tr>
                                 </thead>
-                                {{-- <tr>
-                                    <td class="statusM"></td>
-                                    <td>Berhasil Lolos admin</td>
-                                    <td class="tanggalM"></td>
-                                </tr> --}}
                             </table>
                             </div>  
                             <div class="modal-footer">  
@@ -97,7 +113,7 @@
                             </div>  
                      </div>  
                 </div>  
-            </div> 
+            </div>  --}}
         </div>
     </div>
     
@@ -133,10 +149,11 @@
                         destroy: true,
                         // retrieve: true,
                         searching: false,
+                        
                         columns: [
+                            {"data" : "tanggal"},
                             {"data" : "status"},
                             {"data" : "keterangan"},
-                            {"data" : "created_at"},
                         ]
                     });
                     // $(".statusM").html(json.history)

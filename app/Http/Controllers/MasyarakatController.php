@@ -32,14 +32,14 @@ class MasyarakatController extends Controller
             if (Auth::user()->role == "admin") {
                 $dataMas = masyarakat::where('status', 'peserta')->get();
             }else {
-                $dataMas = masyarakat::where('rw', auth::user()->ketua_rw)->get();
+                $dataMas = masyarakat::where(['rw' => auth::user()->ketua_rw, 'status' => 'peserta'])->get();
             }
         } elseif (count($pecah) >= 5) {
             if ($pecah['5'] == "approve") {
                 if (auth::user()->role == "admin") {
                     $dataMas = masyarakat::where('status', 'approve')->Orwhere('status', 'lolos')->orderBy('status', 'desc')->get();
                 } else{
-                    $dataMas = masyarakat::where('status', 'approve')->where('rw', auth::user()->ketua_rw)->get();
+                    $dataMas = masyarakat::where(['status'=> 'approve', 'rw' => auth::user()->ketua_rw])->Orwhere('status', 'lolos')->get();
                 }
             } elseif ($pecah['5'] == "pending") {
                 if (auth::user()->role == "admin") {
@@ -62,7 +62,7 @@ class MasyarakatController extends Controller
         if (Auth::user()->role == "admin") {
             $dataMas = masyarakat::where('status', 'peserta')->orderBy('id', 'desc')->get();
         }else {
-            $dataMas = masyarakat::where('rw', auth::user()->ketua_rw)->where('status', 'calon')->orderBy('id', 'desc')->get();
+            $dataMas = masyarakat::where('rw', auth::user()->ketua_rw)->where('status', 'peserta')->orderBy('id', 'desc')->get();
         }
 
         $data = ([
@@ -131,6 +131,7 @@ class MasyarakatController extends Controller
         $data->save();
         
         $dataHistory = [
+            'tanggal' => date(now()),
             'id_masyarakat' => $data['id'],
             'nik' => $data['nik'],
             'keterangan' => 'lolos dalam musdes',
@@ -148,6 +149,7 @@ class MasyarakatController extends Controller
         $data->save();
         
         $dataHistory = [
+            'tanggal' => date(now()),
             'id_masyarakat' => $data['id'],
             'nik' => $data['nik'],
             'keterangan' => 'data di kembalikan ke rw',
@@ -164,6 +166,7 @@ class MasyarakatController extends Controller
         $data->status = "peserta";
         $data->save();
         $dataHistory = [
+            'tanggal' => date(now()),
             'id_masyarakat' => $data['id'],
             'nik' => $data['nik'],
             'keterangan' => 'data di jadikan peserta musdes',
@@ -182,6 +185,7 @@ class MasyarakatController extends Controller
         $data->save();
         
         $dataHistory = [
+            'tanggal' => date(now()),
             'id_masyarakat' => $data['id'],
             'nik' => $data['nik'],
             'keterangan' => 'data di jadikan peserta musdes',
@@ -199,6 +203,7 @@ class MasyarakatController extends Controller
         $data->musdes = "1";
         $data->save();
         $dataHistory = [
+            'tanggal' => date(now()),
             'id_masyarakat' => $data['id'],
             'nik' => $data['nik'],
             'keterangan' => 'data di jadikan peserta musdes',
@@ -215,6 +220,7 @@ class MasyarakatController extends Controller
         $data->status = "lolos";
         $data->save();
         $dataHistory = [
+            'tanggal' => date(now()),
             'id_masyarakat' => $data['id'],
             'nik' => $data['nik'],
             'keterangan' => 'data tercantum di kementrian',
@@ -258,7 +264,7 @@ class MasyarakatController extends Controller
             'tempat_lahir' => 'required',
             'tanggal_lahir' => 'required',
             'rt' => 'required',
-            'nik' => 'required',
+            'nik' => 'required|unique:tbl_masyarakat',
             'no_kk' => 'required',
             'jenis_kelamin' => 'required',
             'pekerjaan' => 'required',
@@ -300,6 +306,7 @@ class MasyarakatController extends Controller
         // dd($data);
         $create = masyarakat::create($data);
         $dataHistory = [
+            'tanggal' => date(now()),
             'id_masyarakat' => $create['id'],
             'nik' => $create['nik'],
             'keterangan' => 'data menjadi calon',

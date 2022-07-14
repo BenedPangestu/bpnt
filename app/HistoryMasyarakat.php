@@ -13,7 +13,8 @@ class HistoryMasyarakat extends Model
         'nik',
         'id_masyarakat',
         'keterangan',
-        'status'
+        'status',
+        'tanggal'
     ];
     public function masyarakat()
     {

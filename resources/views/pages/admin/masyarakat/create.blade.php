@@ -46,50 +46,50 @@
                                             <div class="form-group row">
                                                 <label class="col-lg-4 col-form-label"  >Nama <span class="text-danger">*</span></label>
                                                 <div class="col-lg-8">
-                                                    <input type="text" class="form-control" name="nama" placeholder="Enter a nama..">
+                                                    <input type="text" class="form-control" name="nama" value="{{old('nama')}}" placeholder="Enter a nama..">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-lg-4 col-form-label" for="val-suggestions">Alamat <span class="text-danger">*</span></label>
                                                 <div class="col-lg-8">
-                                                    <textarea class="form-control" id="val-suggestions" name="alamat" rows="5" placeholder="Masukan isi alamat lengkap.."></textarea>
+                                                    <textarea class="form-control" id="val-suggestions" name="alamat" rows="5" placeholder="Masukan isi alamat lengkap..">{{old('alamat')}}</textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-lg-4 col-form-label"  >Tempat lahir <span class="text-danger">*</span></label>
                                                 <div class="col-lg-8">
-                                                    <input type="text" class="form-control" name="tempat_lahir" placeholder="Enter a tempat lahir..">
+                                                    <input type="text" class="form-control" name="tempat_lahir" value="{{old('tempat_lahir')}}" placeholder="Enter a tempat lahir..">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-lg-4 col-form-label"  >Tanggal lahir <span class="text-danger">*</span></label>
                                                 <div class="col-lg-8">
-                                                    <input type="date" class="form-control" name="tanggal_lahir" placeholder="Enter a tanggal lahir..">
+                                                    <input type="date" class="form-control" name="tanggal_lahir" value="{{old('tanggal_lahir')}}" placeholder="Enter a tanggal lahir..">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-lg-4 col-form-label"  >RT <span class="text-danger">*</span></label>
                                                 <div class="col-lg-8">
-                                                    <input type="text" class="form-control" name="rt" placeholder="Enter a RT..">
+                                                    <input type="text" class="form-control" name="rt" value="{{old('rt')}}" placeholder="Enter a RT..">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-lg-4 col-form-label"  >NIK<span class="text-danger">*</span></label>
                                                 <div class="col-lg-8">
-                                                    <input type="text" class="form-control" name="nik" placeholder="Enter a nik..">
+                                                    <input type="text" class="form-control" name="nik" value="{{old('nik')}}" placeholder="Enter a nik..">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-lg-4 col-form-label"  >Nomor Kartu Keluarga <span class="text-danger">*</span></label>
                                                 <div class="col-lg-8">
-                                                    <input type="text" class="form-control" name="no_kk" placeholder="Enter a no_kk..">
+                                                    <input type="text" class="form-control" name="no_kk" value="{{old('no_kk')}}" placeholder="Enter a no_kk..">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-lg-4 col-form-label"  >Jenis Kelamin <span class="text-danger">*</span></label>
                                                 <div class="col-lg-8">
                                                     <select class="js-select2 form-control" id="val-select2" name="jenis_kelamin" style="width: 100%;" data-placeholder="Choose one..">
-                                                        <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                                                        <option value="{{old('jenis_kelamin')}}">{{old('jenis_kelamin')}}</option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
                                                         <option value="laki-laki">laki-laki</option>
                                                         <option value="perempuan">perempuan</option>
                                                     </select>
@@ -98,26 +98,26 @@
                                             <div class="form-group row">
                                                 <label class="col-lg-4 col-form-label"  >Pekerjaan <span class="text-danger">*</span></label>
                                                 <div class="col-lg-8">
-                                                    <input type="text" class="form-control" name="pekerjaan" value="">
+                                                    <input type="text" class="form-control" name="pekerjaan" value="{{old('pekerjaan')}}" value="">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-lg-4 col-form-label"  >Agama <span class="text-danger">*</span></label>
                                                 <div class="col-lg-8">
-                                                    <input type="text" class="form-control" name="agama" value="">
+                                                    <input type="text" class="form-control" name="agama" value="{{old('agama')}}" value="">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-lg-4 col-form-label"  >Luas Bangunan <span class="text-danger">*</span></label>
                                                 <div class="col-lg-8">
-                                                    <input type="text" class="form-control" name="luas_bangunan" value="">
+                                                    <input type="text" class="form-control" name="luas_bangunan" value="{{old('luas_bangunan')}}" value="">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-lg-4 col-form-label"  >Jenis Atap <span class="text-danger">*</span></label>
                                                 <div class="col-lg-8">
-                                                    <select class="js-select2 form-control" id="val-select9" name="jenis_atap" style="width: 100%;" data-placeholder="Choose one..">
-                                                        <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                                                    <select class="js-select2 form-control" id="val-select9" name="jenis_atap" value="{{old('jenis_atap')}}" style="width: 100%;" data-placeholder="Choose one..">
+                                                        <option value="{{old('jenis_atap')}}">{{old('jenis_atap')}}</option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
                                                         <option value="genteng">genteng</option>
                                                         <option value="seng">seng</option>
                                                         <option value="asbes">asbes</option>
@@ -127,8 +127,8 @@
                                             <div class="form-group row">
                                                 <label class="col-lg-4 col-form-label"  >Jenis Lantai<span class="text-danger">*</span></label>
                                                 <div class="col-lg-8">
-                                                    <select class="js-select2 form-control" id="val-select8" name="jenis_lantai" style="width: 100%;" data-placeholder="Choose one..">
-                                                        <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                                                    <select class="js-select2 form-control" id="val-select8" name="jenis_lantai" value="{{old('jenis_lantai')}}" style="width: 100%;" data-placeholder="Choose one..">
+                                                        <option value="{{old('jenis_lantai')}}">{{old('jenis_lantai')}}</option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
                                                         <option value="keramik">keramik</option>
                                                         <option value="kayu">kayu</option>
                                                         <option value="semen">semen</option>
@@ -140,8 +140,8 @@
                                             <div class="form-group row">
                                                 <label class="col-lg-4 col-form-label"  >Jenis Dinding<span class="text-danger">*</span></label>
                                                 <div class="col-lg-8">
-                                                    <select class="js-select2 form-control" id="val-select7" name="jenis_dinding" style="width: 100%;" data-placeholder="Choose one..">
-                                                        <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                                                    <select class="js-select2 form-control" id="val-select7" name="jenis_dinding" value="{{old('jenis_dinding')}}" style="width: 100%;" data-placeholder="Choose one..">
+                                                        <option value="{{old('jenis_dinding')}}">{{old('jenis_dinding')}}</option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
                                                         <option value="tembok">tembok</option>
                                                         <option value="kayu">kayu</option>
                                                         <option value="bambu">bambu</option>
@@ -151,8 +151,8 @@
                                             <div class="form-group row">
                                                 <label class="col-lg-4 col-form-label"  >Sumber Listrik<span class="text-danger">*</span></label>
                                                 <div class="col-lg-8">
-                                                    <select class="js-select2 form-control" id="val-select6" name="sumber_listrik" style="width: 100%;" data-placeholder="Choose one..">
-                                                        <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                                                    <select class="js-select2 form-control" id="val-select6" name="sumber_listrik" value="{{old('sumber_listrik')}}" style="width: 100%;" data-placeholder="Choose one..">
+                                                        <option value="{{old('sumber_listrik')}}">{{old('sumber_listrik')}}</option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
                                                         <option value="pln">pln</option>
                                                         <option value="non_pln">non_pln</option>
                                                     </select>
@@ -161,8 +161,8 @@
                                             <div class="form-group row">
                                                 <label class="col-lg-4 col-form-label"  >Sumber Air minum<span class="text-danger">*</span></label>
                                                 <div class="col-lg-8">
-                                                    <select class="js-select2 form-control" id="val-select5" name="sumber_air_minum" style="width: 100%;" data-placeholder="Choose one..">
-                                                        <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                                                    <select class="js-select2 form-control" id="val-select5" name="sumber_air_minum" value="{{old('sumber_air_minum')}}" style="width: 100%;" data-placeholder="Choose one..">
+                                                        <option value="{{old('sumber_air_minum')}}">{{old('sumber_air_minum')}}</option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
                                                         <option value="sumur">sumur</option>
                                                         <option value="pam">pam</option>
                                                     </select>
@@ -171,8 +171,8 @@
                                             <div class="form-group row">
                                                 <label class="col-lg-4 col-form-label"  >Bahan Masak<span class="text-danger">*</span></label>
                                                 <div class="col-lg-8">
-                                                    <select class="js-select2 form-control" id="val-select2" name="bahan_masak" style="width: 100%;" data-placeholder="Choose one..">
-                                                        <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                                                    <select class="js-select2 form-control" id="val-select2" name="bahan_masak" value="{{old('bahan_masak')}}" style="width: 100%;" data-placeholder="Choose one..">
+                                                        <option value="{{old('bahan_masak')}}">{{old('bahan_masak')}}</option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
                                                         <option value="gas">gas</option>
                                                         <option value="kayu">kayu</option>
                                                         <option value="listrik">listrik</option>
@@ -183,8 +183,8 @@
                                             <div class="form-group row">
                                                 <label class="col-lg-4 col-form-label"  >Fasilitas Wc<span class="text-danger">*</span></label>
                                                 <div class="col-lg-8">
-                                                    <select class="js-select2 form-control" id="val-select3" name="fasilitas_wc" style="width: 100%;" data-placeholder="Choose one..">
-                                                        <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                                                    <select class="js-select2 form-control" id="val-select3" name="fasilitas_wc" value="{{old('fasilitas_wc')}}" style="width: 100%;" data-placeholder="Choose one..">
+                                                        <option value="{{old('fasilitas_wc')}}">{{old('fasilitas_wc')}}</option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
                                                         <option value="ada">ada</option>
                                                         <option value="tidak">tidak</option>
                                                     </select>
@@ -193,8 +193,8 @@
                                             <div class="form-group row">
                                                 <label class="col-lg-4 col-form-label"  >Lahan tinggal<span class="text-danger">*</span></label>
                                                 <div class="col-lg-8">
-                                                    <select class="js-select2 form-control" id="val-select4" name="lahan_tinggal" style="width: 100%;" data-placeholder="Choose one..">
-                                                        <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                                                    <select class="js-select2 form-control" id="val-select4" name="lahan_tinggal" value="{{old('lahan_tinggal')}}" style="width: 100%;" data-placeholder="Choose one..">
+                                                        <option value="{{old('lahan_tinggal')}}">{{old('lahan_tinggal')}}</option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
                                                         <option value="sewa">sewa</option>
                                                         <option value="milik sendiri">milik sendiri</option>
                                                     </select>

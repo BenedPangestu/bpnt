@@ -118,67 +118,72 @@
                                     <div class="modal-body" id="detail_user">
                                     <table>
                                         <tr>
-                                            <td style="width: 50%">nama :</td>
+                                            <td style="width: 50%">nama </td>
                                             <td style="width: 50%" class="namaM"></td>
                                         </tr>
                                         <tr>
-                                            <td style="width: 50%">alamat :</td>
+                                            <td style="width: 50%">alamat </td>
                                             <td style="width: 50%" class="alamatM"></td>
                                         </tr>
                                         <tr>
-                                            <td style="width: 50%">tanggal lahir :</td>
+                                            <td style="width: 50%">tanggal lahir </td>
                                             <td style="width: 50%" class="tanggalM"></td>
                                         </tr>
                                         <tr>
-                                            <td style="width: 50%">rt :</td>
+                                            <td style="width: 50%">rt </td>
                                             <td style="width: 50%" class="rtM"></td>
                                         </tr>
                                         <tr>
-                                            <td style="width: 50%">rw :</td>
+                                            <td style="width: 50%">rw </td>
                                             <td style="width: 50%" class="rwM"></td>
                                         </tr>
                                         <tr>
-                                            <td style="width: 50%">nik :</td>
+                                            <td style="width: 50%">nik </td>
                                             <td style="width: 50%" class="nikM"></td>
                                         </tr>
                                         <tr>
-                                            <td style="width: 50%">No KK :</td>
+                                            <td style="width: 50%">No KK </td>
                                             <td style="width: 50%" class="nokkM"></td>
                                         </tr>
                                         <tr>
-                                            <td style="width: 50%">jenis kelamin :</td>
+                                            <td style="width: 50%">jenis kelamin </td>
                                             <td style="width: 50%" class="jeniskelaminM"></td>
                                         </tr>
                                         <tr>
-                                            <td style="width: 50%">jenis atap :</td>
+                                            <td style="width: 50%">luas bangunan</td>
+                                            <td style="width: 50%" class="luasBangunanM"></td>
+                                        </tr>
+                                        <tr>
+                                        <tr>
+                                            <td style="width: 50%">jenis atap </td>
                                             <td style="width: 50%" class="jenisatapM"></td>
                                         </tr>
                                         <tr>
-                                            <td style="width: 50%">jenis lantai :</td>
+                                            <td style="width: 50%">jenis lantai </td>
                                             <td style="width: 50%" class="jenislantaiM"></td>
                                         </tr>
                                         <tr>
-                                            <td style="width: 50%">jenis dinding :</td>
+                                            <td style="width: 50%">jenis dinding </td>
                                             <td style="width: 50%" class="jenisdindingM"></td>
                                         </tr>
                                         <tr>
-                                            <td style="width: 50%">sumber listrik :</td>
+                                            <td style="width: 50%">sumber listrik </td>
                                             <td style="width: 50%" class="sumberlistrikM"></td>
                                         </tr>
                                         <tr>
-                                            <td style="width: 50%">bahan masak :</td>
+                                            <td style="width: 50%">bahan masak </td>
                                             <td style="width: 50%" class="bahanmasakM"></td>
                                         </tr>
                                         <tr>
-                                            <td style="width: 50%">fasilitas wc :</td>
+                                            <td style="width: 50%">fasilitas wc </td>
                                             <td style="width: 50%" class="fasilitaswcM"></td>
                                         </tr>
                                         <tr>
-                                            <td style="width: 50%">lahan tinggal :</td>
+                                            <td style="width: 50%">lahan tinggal </td>
                                             <td style="width: 50%" class="lahantinggalM"></td>
                                         </tr>
                                         <tr>
-                                            <td style="width: 50%">status :</td>
+                                            <td style="width: 50%">status </td>
                                             <td style="width: 50%" class="statusM"></td>
                                         </tr>
                                     </table>
@@ -206,23 +211,24 @@ $(document).ready(function(){
 			data: {data_id: data_id},
 			success: function(data){
                 var json = JSON.parse(data);
-                $(".namaM").html(json.nama)
-                $(".alamatM").html(json.alamat)
-                $(".tanggalM").html(json.tanggal_lahir)
-                $(".rtM").html(json.rt)
-                $(".rwM").html(json.rw)
-                $(".nikM").html(json.nik)
-                $(".nokkM").html(json.no_kk)
-                $(".jeniskelaminM").html(json.jenis_kelamin)
-                $(".jenisatapM").html(json.jenis_atap)
-                $(".jenislantaiM").html(json.jenis_lantai)
-                $(".jenisdindingM").html(json.jenis_dinding)
-                $(".sumberairM").html(json.sumber_air)
-                $(".sumberlistrikM").html(json.sumber_listrik)
-                $(".bahanmasakM").html(json.bahan_masak)
-                $(".fasilitaswcM").html(json.fasilitas_wc)
-                $(".lahantinggalM").html(json.lahan_tinggal)
-                $(".statusM").html(json.status)
+                $(".namaM").html(": "+ json.nama)
+                $(".alamatM").html(": "+ json.alamat)
+                $(".tanggalM").html(": "+ json.tempat_lahir+ ","+ json.tanggal_lahir)
+                $(".rtM").html(": "+ json.rt)
+                $(".rwM").html(": "+ json.rw)
+                $(".nikM").html(": "+ json.nik)
+                $(".nokkM").html(": "+ json.no_kk)
+                $(".jeniskelaminM").html(": "+ json.jenis_kelamin)
+                $(".jenisatapM").html(": "+ json.jenis_atap)
+                $(".luasBangunanM").html(": "+ json.luas_bangunan+ " meter")
+                $(".jenislantaiM").html(": "+ json.jenis_lantai)
+                $(".jenisdindingM").html(": "+ json.jenis_dinding)
+                $(".sumberairM").html(": "+ json.sumber_air)
+                $(".sumberlistrikM").html(": "+ json.sumber_listrik)
+                $(".bahanmasakM").html(": "+ json.bahan_masak)
+                $(".fasilitaswcM").html(": "+ json.fasilitas_wc)
+                $(".lahantinggalM").html(": "+ json.lahan_tinggal)
+                $(".statusM").html(": "+ json.status)
 
                 $("#dataModal").modal('show')
 			}
