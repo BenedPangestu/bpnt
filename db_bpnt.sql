@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 08, 2022 at 11:39 AM
+-- Generation Time: Jul 15, 2022 at 08:56 AM
 -- Server version: 5.7.33
 -- PHP Version: 7.4.19
 
@@ -88,6 +88,7 @@ CREATE TABLE `tbl_history_masyarakat` (
   `id_masyarakat` int(11) DEFAULT NULL,
   `status` varchar(10) NOT NULL,
   `keterangan` varchar(50) DEFAULT NULL,
+  `tanggal` date DEFAULT NULL,
   `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `deleted_at` datetime DEFAULT NULL
@@ -97,15 +98,25 @@ CREATE TABLE `tbl_history_masyarakat` (
 -- Dumping data for table `tbl_history_masyarakat`
 --
 
-INSERT INTO `tbl_history_masyarakat` (`id`, `nik`, `id_masyarakat`, `status`, `keterangan`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, '3201151204010002', 1, 'calon', 'data menjadi calon', '2022-07-08 13:09:19', '2022-07-08 13:09:19', NULL),
-(2, '3201151204010002', 1, 'peserta', 'data di jadikan peserta musdes', '2022-07-08 13:10:28', '2022-07-08 13:10:28', NULL),
-(3, '3201151204010002', 1, 'approve', 'lolos dalam musdes', '2022-07-08 13:11:12', '2022-07-08 13:11:12', NULL),
-(4, '3201151204010002', 1, 'lolos', 'data tercantum di kementrian', '2022-07-08 13:11:36', '2022-07-08 13:11:36', NULL),
-(5, '3201151204010002', 2, 'calon', 'data menjadi calon', '2022-07-08 13:28:50', '2022-07-08 13:28:50', NULL),
-(6, '3201151204010002', 2, 'peserta', 'data di jadikan peserta musdes', '2022-07-08 15:29:47', '2022-07-08 15:29:47', NULL),
-(7, '3201151204010002', 2, 'approve', 'lolos dalam musdes', '2022-07-08 15:29:56', '2022-07-08 15:29:56', NULL),
-(8, '3201151204010002', 2, 'peserta', 'data di jadikan peserta musdes', '2022-07-08 15:30:00', '2022-07-08 15:30:00', NULL);
+INSERT INTO `tbl_history_masyarakat` (`id`, `nik`, `id_masyarakat`, `status`, `keterangan`, `tanggal`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, '3201151204010002', 1, 'calon', 'data menjadi calon', NULL, '2022-07-08 13:09:19', '2022-07-08 13:09:19', NULL),
+(2, '3201151204010002', 1, 'peserta', 'data di jadikan peserta musdes', NULL, '2022-07-08 13:10:28', '2022-07-08 13:10:28', NULL),
+(3, '3201151204010002', 1, 'approve', 'lolos dalam musdes', NULL, '2022-07-08 13:11:12', '2022-07-08 13:11:12', NULL),
+(4, '3201151204010002', 1, 'lolos', 'data tercantum di kementrian', NULL, '2022-07-08 13:11:36', '2022-07-08 13:11:36', NULL),
+(5, '3201151204010002', 2, 'calon', 'data menjadi calon', NULL, '2022-07-08 13:28:50', '2022-07-08 13:28:50', NULL),
+(6, '3201151204010002', 2, 'peserta', 'data di jadikan peserta musdes', NULL, '2022-07-08 15:29:47', '2022-07-08 15:29:47', NULL),
+(7, '3201151204010002', 2, 'approve', 'lolos dalam musdes', NULL, '2022-07-08 15:29:56', '2022-07-08 15:29:56', NULL),
+(8, '3201151204010002', 2, 'peserta', 'data di jadikan peserta musdes', NULL, '2022-07-08 15:30:00', '2022-07-08 15:30:00', NULL),
+(9, '3', 3, 'calon', 'data menjadi calon', NULL, '2022-07-13 09:17:23', '2022-07-13 09:17:23', NULL),
+(10, '3201923763475834', 4, 'calon', 'data menjadi calon', NULL, '2022-07-13 09:23:49', '2022-07-13 09:23:49', NULL),
+(11, '3201923763475832', 5, 'calon', 'data menjadi calon', NULL, '2022-07-13 09:29:53', '2022-07-13 09:29:53', NULL),
+(12, '3201151204010002', 2, 'approve', 'lolos dalam musdes', '2022-07-13', '2022-07-13 10:35:57', '2022-07-13 10:35:57', NULL),
+(13, '3201151204010002', 2, 'lolos', 'data tercantum di kementrian', '2022-07-13', '2022-07-13 10:36:02', '2022-07-13 10:36:02', NULL),
+(14, '3', 3, 'peserta', 'data di jadikan peserta musdes', '2022-07-13', '2022-07-13 20:04:15', '2022-07-13 20:04:15', NULL),
+(15, '3201923763475834', 4, 'peserta', 'data di jadikan peserta musdes', '2022-07-13', '2022-07-13 20:05:11', '2022-07-13 20:05:11', NULL),
+(16, '3201923763475832', 5, 'peserta', 'data di jadikan peserta musdes', '2022-07-13', '2022-07-13 20:23:28', '2022-07-13 20:23:28', NULL),
+(17, '3201923763475832', 5, 'approve', 'lolos dalam musdes', '2022-07-13', '2022-07-13 20:23:35', '2022-07-13 20:23:35', NULL),
+(18, '3201151204010001', 6, 'calon', 'data menjadi calon', '2022-07-14', '2022-07-14 22:26:08', '2022-07-14 22:26:08', NULL);
 
 -- --------------------------------------------------------
 
@@ -149,7 +160,11 @@ CREATE TABLE `tbl_masyarakat` (
 
 INSERT INTO `tbl_masyarakat` (`id`, `nama`, `alamat`, `tempat_lahir`, `tanggal_lahir`, `rt`, `rw`, `nik`, `no_kk`, `jenis_kelamin`, `pekerjaan`, `agama`, `luas_bangunan`, `jenis_atap`, `jenis_lantai`, `jenis_dinding`, `sumber_listrik`, `sumber_air`, `bahan_masak`, `fasilitas_wc`, `lahan_tinggal`, `status`, `musdes`, `l_musdes`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 'AJI PANGESTU', 'babakan dramaga no 8', 'bogor', '2001-02-02', '3', '1', '3201151204010002', '3213214213214212', 'laki-laki', 'Karyawan Swasta', 'islam', '3000', 'genteng', 'keramik', 'tembok', 'pln', 'sumur', 'gas', 'ada', 'milik sendiri', 'lolos', 1, NULL, '2022-07-08 13:09:19', '2022-07-08 13:11:36', NULL),
-(2, 'Fajar', 'babaakn', 'bogor', '2022-12-02', '2', '1', '3201151204010002', '3213214213214212', 'laki-laki', 'Karyawan Swasta', 'islam', '3000', 'genteng', 'keramik', 'tembok', 'pln', 'sumur', 'gas', 'ada', 'milik sendiri', 'peserta', 1, 1, '2022-07-08 13:28:50', '2022-07-08 15:30:00', NULL);
+(2, 'Fajar', 'babaakn', 'bogor', '2022-12-02', '2', '1', '3201151204010002', '3213214213214212', 'laki-laki', 'Karyawan Swasta', 'islam', '3000', 'genteng', 'keramik', 'tembok', 'pln', 'sumur', 'gas', 'ada', 'milik sendiri', 'lolos', 1, 1, '2022-07-08 13:28:50', '2022-07-13 10:36:02', NULL),
+(3, 'bintang', 'babakan no 4', 'bogor', '2001-02-02', '2', '9', '3', '3201923763475834', 'laki-laki', 'wirausaha', 'islam', '3000', 'genteng', 'keramik', 'kayu', 'pln', 'sumur', 'kayu', 'ada', 'sewa', 'peserta', 0, NULL, '2022-07-13 09:17:23', '2022-07-13 20:04:15', NULL),
+(4, 'rehan', 'cibanteng', 'bogor', '2001-02-02', '4', '9', '3201923763475834', '3201923763475834', 'perempuan', 'wirausaha', 'islam', '3000', 'genteng', 'keramik', 'tembok', 'pln', 'sumur', 'gas', 'ada', 'sewa', 'peserta', 0, NULL, '2022-07-13 09:23:49', '2022-07-13 20:05:10', NULL),
+(5, 'bagus', 'cibanteng babengket', 'bogor', '2001-12-12', '4', '9', '3201923763475832', '3201923763475834', 'laki-laki', 'wirausaha', 'islam', '3000', 'seng', 'keramik', 'tembok', 'pln', 'sumur', 'gas', 'ada', 'milik sendiri', 'approve', 1, NULL, '2022-07-13 09:29:53', '2022-07-13 20:23:35', NULL),
+(6, 'Dr. Jackson Schmittr', 'drmaga', 'bogor', '2001-12-12', '2', '9', '3201151204010001', '3213214213214212', 'laki-laki', 'Karyawan Swasta', 'islam', '3000', 'genteng', 'kayu', 'kayu', 'non_pln', 'sumur', 'listrik', 'ada', 'sewa', 'calon', 0, NULL, '2022-07-14 22:26:08', '2022-07-14 22:26:08', NULL);
 
 -- --------------------------------------------------------
 
@@ -184,7 +199,9 @@ INSERT INTO `users` (`id`, `nama`, `role`, `agama`, `username`, `email`, `email_
 (2, 'Aji Pangestu', 'admin', NULL, 'Apang', 'ajipangestu4211@gmail.com', NULL, '$2y$10$x8.HlwxNqpqQWVyX7ggbrunp/IqN5.KJsUCKsocb2kOEiFc3bA7bO', NULL, NULL, NULL, '', NULL, '2022-06-20 00:09:39', '2022-06-20 00:09:39'),
 (4, 'ardi', 'rw', 'islam', 'ard', 'ardi@gmail.com', NULL, '$2y$10$x8.HlwxNqpqQWVyX7ggbrunp/IqN5.KJsUCKsocb2kOEiFc3bA7bO', 'islam', 'dramaga babakan 02', '081245238453', '2', NULL, '2022-06-23 10:41:19', NULL),
 (5, 'Fajar', 'rw', 'islam', 'admin', 'admin@gmail.com', NULL, '25d55ad283aa400af464c76d713c07ad', 'laki-laki', 'babakan dramaga 4', '083234232452345', '4', NULL, '2022-06-23 04:25:05', '2022-06-23 04:25:05'),
-(6, 'apang pangestu', 'rw', 'islam', 'apang', 'apang@gmail.com', NULL, '25d55ad283aa400af464c76d713c07ad', 'laki-laki', NULL, NULL, '3', NULL, '2022-07-05 07:45:54', '2022-07-05 07:45:54');
+(6, 'apang pangestu', 'rw', 'islam', 'apang', 'apang@gmail.com', NULL, '25d55ad283aa400af464c76d713c07ad', 'laki-laki', NULL, NULL, '3', NULL, '2022-07-05 07:45:54', '2022-07-05 07:45:54'),
+(7, 'fajar', 'rw', 'islam', 'ajay', 'ajay@gmail.com', NULL, '25d55ad283aa400af464c76d713c07ad', 'laki-laki', NULL, NULL, '7', NULL, '2022-07-13 02:06:05', '2022-07-13 02:06:48'),
+(8, 'jack', 'rw', 'islam', 'jacker', 'jack@gmail.com', NULL, '$2y$10$zF837WcVXFRhF4nQ2CotEee4eEPA2mR/7xt.GjBA7cUFWZXzuFudW', 'laki-laki', NULL, NULL, '9', NULL, '2022-07-13 02:11:17', '2022-07-13 02:11:17');
 
 --
 -- Indexes for dumped tables
@@ -247,19 +264,19 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `tbl_history_masyarakat`
 --
 ALTER TABLE `tbl_history_masyarakat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `tbl_masyarakat`
 --
 ALTER TABLE `tbl_masyarakat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
