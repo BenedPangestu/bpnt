@@ -42,9 +42,9 @@ task finishing :
 1. unique pada nik ✔
 2. tanggal pada history ✔
 3. input form salah langsung masukin yang lama ✔
-4. detail data tambahin semua data nya, untuk luas bangunan pakai meter
+4. detail data tambahin semua data nya, untuk luas bangunan pakai meter ✔
 5. data rw yang di input tidak bisa login ✔
-6. cetak data, perlu di finishing
+6. cetak data, perlu di finishing ✔
 
 Task finishing :
 1. jumlah pada Dashboard ✔

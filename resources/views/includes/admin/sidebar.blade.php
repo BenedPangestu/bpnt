@@ -25,8 +25,8 @@
                 <!-- Logo -->
                 <div class="content-header-item">
                     <a class="link-effect font-w700" href="#">
-                        <i class="fa fa-map text-primary"></i>
-                        <span class="font-size-xl text-dual-primary-dark">BPNT/</span><span class="font-size-xl text-primary">KPM</span>
+                        <i class="fa fa-map" style="color: white"></i>
+                        <span class="font-size-xl" style="color: white">BPNT/KPM</span>
                     </a>
                 </div>
                 <!-- END Logo -->

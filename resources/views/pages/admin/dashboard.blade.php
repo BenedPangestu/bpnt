@@ -150,13 +150,21 @@
                                             <td style="width: 50%" class="jeniskelaminM"></td>
                                         </tr>
                                         <tr>
+                                            <td style="width: 50%">Pekerjaan </td>
+                                            <td style="width: 50%" class="pekerjaanM"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width: 50%">Agama </td>
+                                            <td style="width: 50%" class="agamaM"></td>
+                                        </tr>
+                                        <tr>
                                             <td style="width: 50%">luas bangunan</td>
                                             <td style="width: 50%" class="luasBangunanM"></td>
                                         </tr>
                                         <tr>
                                         <tr>
                                             <td style="width: 50%">jenis atap </td>
-                                            <td style="width: 50%" class="jenisatapM"></td>
+                                            <td style="width: 50%" class="jenisAtapM"></td>
                                         </tr>
                                         <tr>
                                             <td style="width: 50%">jenis lantai </td>
@@ -219,8 +227,10 @@ $(document).ready(function(){
                 $(".nikM").html(": "+ json.nik)
                 $(".nokkM").html(": "+ json.no_kk)
                 $(".jeniskelaminM").html(": "+ json.jenis_kelamin)
-                $(".jenisatapM").html(": "+ json.jenis_atap)
+                $(".pekerjaanM").html(": "+ json.pekerjaan)
+                $(".agamaM").html(": "+ json.agama)
                 $(".luasBangunanM").html(": "+ json.luas_bangunan+ " meter")
+                $(".jenisAtapM").html(": "+ json.jenis_atap)
                 $(".jenislantaiM").html(": "+ json.jenis_lantai)
                 $(".jenisdindingM").html(": "+ json.jenis_dinding)
                 $(".sumberairM").html(": "+ json.sumber_air)
