@@ -46,25 +46,25 @@
                                             <div class="form-group row">
                                                 <label class="col-lg-4 col-form-label"  >Nama <span class="text-danger">*</span></label>
                                                 <div class="col-lg-8">
-                                                    <input type="text" class="form-control" name="nama" placeholder="Enter a nama..">
+                                                    <input type="text" value="{{old('nama')}}" class="form-control" name="nama" placeholder="Enter a nama..">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-lg-4 col-form-label"  >username <span class="text-danger">*</span></label>
                                                 <div class="col-lg-8">
-                                                    <input type="text" class="form-control" name="username" placeholder="Enter a username..">
+                                                    <input type="text" value="{{old('username')}}" class="form-control" name="username" placeholder="Enter a username.." >
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-lg-4 col-form-label"  >password <span class="text-danger">*</span></label>
                                                 <div class="col-lg-8">
-                                                    <input type="text" class="form-control" name="password" placeholder="Enter a password..">
+                                                    <input type="text" value="{{old('password')}}" class="form-control" name="password" placeholder="Enter a password..">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-lg-4 col-form-label"  >Email <span class="text-danger">*</span></label>
                                                 <div class="col-lg-8">
-                                                    <input type="text" class="form-control" name="email" placeholder="Enter a email..">
+                                                    <input type="text" value="{{old('email')}}" class="form-control" name="email" placeholder="Enter a email..">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -76,20 +76,20 @@
                                             <div class="form-group row">
                                                 <label class="col-lg-4 col-form-label" for="val-suggestions">Alamat <span class="text-danger">*</span></label>
                                                 <div class="col-lg-8">
-                                                    <textarea class="form-control" id="val-suggestions" name="alamat" rows="5" placeholder="Masukan isi alamat lengkap.."></textarea>
+                                                    <textarea class="form-control" id="val-suggestions" name="alamat" rows="5" placeholder="Masukan isi alamat lengkap..">{{old('pekerjaan')}}</textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-lg-4 col-form-label"  >rw <span class="text-danger">*</span></label>
                                                 <div class="col-lg-8">
-                                                    <input type="text" class="form-control" name="rw" placeholder="Enter a rw..">
+                                                    <input type="text" value="{{old('rw')}}" class="form-control" name="rw" placeholder="Enter a rw..">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-lg-4 col-form-label"  >Jenis Kelamin <span class="text-danger">*</span></label>
                                                 <div class="col-lg-8">
                                                     <select class="js-select2 form-control" id="val-select2" name="jenis_kelamin" style="width: 100%;" data-placeholder="Choose one..">
-                                                        <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                                                        <option value="{{old('jenis_kelamin')}}" selected>{{old('jenis_kelamin')}}</option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
                                                         <option value="laki-laki">laki-laki</option>
                                                         <option value="perempuan">perempuan</option>
                                                     </select>
@@ -98,13 +98,13 @@
                                             <div class="form-group row">
                                                 <label class="col-lg-4 col-form-label"  >no_hp <span class="text-danger">*</span></label>
                                                 <div class="col-lg-8">
-                                                    <input type="text" class="form-control" name="no_hp" placeholder="Enter a no_hp..">
+                                                    <input type="text" value="{{old('no_hp')}}" class="form-control" name="no_hp" placeholder="Enter a no_hp..">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-lg-4 col-form-label"  >agama <span class="text-danger">*</span></label>
                                                 <div class="col-lg-8">
-                                                    <input type="text" class="form-control" name="agama" value="">
+                                                    <input type="text" value="{{old('agama')}}" class="form-control" name="agama" value="">
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
