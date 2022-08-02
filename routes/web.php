@@ -30,6 +30,7 @@ Route::prefix('admin')
     Route::get('/detail/history/{id}', ['as'=> 'detail.history', 'uses'=>'MasyarakatController@historyData']);
 
     Route::get('/user/rw', ['as'=> 'user.rw', 'uses'=>'UserController@dataUser']);
+    Route::get('/user/rw/cetak', ['as'=> 'user.cetak', 'uses'=>'UserController@cetak_data']);
     Route::get('/user/rw/create', ['as'=> 'user.create', 'uses'=>'UserController@create']);
     Route::post('/user/rw/store', ['as'=> 'user.store', 'uses'=>'UserController@store']);
     Route::get('/user/rw/edit/{id}', ['as'=> 'user.edit', 'uses'=>'UserController@edit']);

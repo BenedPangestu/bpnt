@@ -174,7 +174,7 @@ class MasyarakatController extends Controller
         ];
         HistoryMasyarakat::create($dataHistory);
 
-        return redirect()->to('admin/masyarakat')->with('success', 'Pending data succes');
+        return redirect()->to('admin/masyarakat')->with('success', 'data succes diajukan');
     }
     public function pesData($id)
     {

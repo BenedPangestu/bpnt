@@ -108,7 +108,8 @@
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <a href="" type="button" class="btn btn-alt-secondary" data-dismiss="modal">Close</a>
+                                                {{-- <a href="" type="button" class="btn btn-alt-secondary" data-dismiss="modal">Close</a> --}}
+                                                <a href="{{url()->previous()}}" type="button" class="btn btn-alt-secondary" data-dismiss="modal">Back</a>
                                                 <button type="submit" class="btn btn-alt-success" data-dismiss="modal">
                                                     <i class="fa fa-check"></i> Tambah Data
                                                 </button>

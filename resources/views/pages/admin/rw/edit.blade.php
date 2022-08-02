@@ -61,17 +61,17 @@
                         <div class="form-group row">
                             <label class="col-lg-4 col-form-label"  >No hp <span class="text-danger">*</span></label>
                             <div class="col-lg-8">
-                                <input type="text" class="form-control" name="no_hp" placeholder="Enter a email.." value="{{$user->no_hp}}">
+                                <input type="text" class="form-control" name="no_hp" placeholder="Enter a no hp.." value="{{$user->no_hp}}">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-4 col-form-label"  >Agama <span class="text-danger">*</span></label>
                             <div class="col-lg-8">
-                                <input type="text" class="form-control" name="agama" placeholder="Enter a email.." value="{{$user->agama}}">
+                                <input type="text" class="form-control" name="agama" placeholder="Enter a agama.." value="{{$user->agama}}">
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <a href="{{url()->previous()}}" type="button" class="btn btn-alt-secondary" data-dismiss="modal">Close</a>
+                            <a href="{{url()->previous()}}" type="button" class="btn btn-alt-secondary" data-dismiss="modal">Back</a>
                             <button type="submit" class="btn btn-alt-success" data-dismiss="modal">
                                 <i class="fa fa-check"></i> Edit Data
                             </button>

@@ -50,8 +50,15 @@
                 </a>
                 <ul class="list-inline mt-10">
                     <li class="list-inline-item">
-                        <a class="link-effect text-dual-primary-dark font-size-xs font-w600 text-uppercase" href="#">{{Auth::user()->role}}</a>
-                        <p>{{Auth::user()->username}}</p>
+                        <a class="link-effect text-dual-primary-dark font-size-xs font-w600 text-uppercase" href="#">
+                            @if (Auth::user()->role == "admin")
+                                {{Auth::user()->role}}   
+                            @else
+                                {{Auth::user()->role}} {{Auth::user()->ketua_rw}}
+                            @endif    
+                        </a>
+                        <p>{{Auth::user()->username}}</p>   
+                        
                     </li>
                 </ul>
             </div>

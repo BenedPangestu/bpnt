@@ -51,6 +51,22 @@ Task finishing :
 2. label pada form data masyarakat ✔
 3. hapus forgot password ✔
 
+Task 30 juli :
+1. dashboard tolak ganti ✔
+2. data pending action view belum nampil ✔
+3. data approve judul sebenernya ✔
+4. profile di navbar
+5. data calon judulnya ✔
+6. data calon admin buat filter per rw
+7. dashboard admin tolak ubah menjadi data rw ✔
+8. di dashboard sediakan fitur filter per rt
+9. notifikasi jadikan peserta benerin "pending data succes"  ✔
+10. data rw action cetak data belum berfungsi ✔
+11. form no telp di rw ✔
+12. close di form data rw ✔
+13. data yang notif nya belum terisi jangan dulu masuk db
+14. watermark di bawah hapus aja ✔
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">

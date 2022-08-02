@@ -66,7 +66,7 @@
             <!-- END Main Container -->
 
             <!-- Footer -->
-            @include('includes.admin.footer')
+            {{-- @include('includes.admin.footer') --}}
             <!-- END Footer -->
         </div>
         @include('includes.admin.script')

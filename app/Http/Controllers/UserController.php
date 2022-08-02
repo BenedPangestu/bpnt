@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class UserController extends Controller
 {
@@ -16,6 +17,17 @@ class UserController extends Controller
         ]);
 
         return view('pages/admin/rw/dashboard', $data);
+    }
+    public function cetak_data()
+    {
+        $dataRw = User::where('role', 'rw')->get();
+        $data = ([
+            'title'=> 'masyarakat',
+            'rw' => $dataRw,
+            // 'request' => $request->nama,
+        ]);
+        $pdf = PDF::loadview('layouts/cetak_rw', ['rw'=> $data['rw']])->setPaper('a4', 'potrait');
+        return $pdf->stream('Masyarakat.pdf');
     }
     public function create()
     {

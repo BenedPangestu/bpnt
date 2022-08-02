@@ -11,7 +11,7 @@
             <h3 class="block-title">Data {{$title}}</h3>
             {{-- @if (Auth::user()->role == "rw") --}}
                 <a href="{{Route('user.create')}}" type="button" class="btn btn-primary mr-2" >Tambah Data</a>
-                <a href="#" type="button" class="btn btn-info" >Cetak Data</a>
+                <a href="{{Route('user.cetak')}}" type="button" class="btn btn-info" >Cetak Data</a>
             {{-- @endif --}}
         
         </div>

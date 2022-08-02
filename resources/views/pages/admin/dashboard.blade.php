@@ -34,17 +34,6 @@
             <a class="block block-link-shadow text-right" href="javascript:void(0)">
                 <div class="block-content block-content-full clearfix">
                     <div class="float-left mt-10 d-none d-sm-block">
-                        <i class="si si-users fa-3x text-body-bg-dark"></i>
-                    </div>
-                    <div class="font-size-sm font-w600 text-uppercase text-muted">Tolak</div>
-                    <div class="font-size-h4">{{count($masyarakatTolak)}}</div>
-                </div>
-            </a>
-        </div>
-        <div class="col-6 col-xl-3">
-            <a class="block block-link-shadow text-right" href="javascript:void(0)">
-                <div class="block-content block-content-full clearfix">
-                    <div class="float-left mt-10 d-none d-sm-block">
                         <i class="si si-bag fa-3x text-body-bg-dark"></i>
                     </div>
                     <div class="font-size-sm font-w600 text-uppercase text-muted">Approve</div>
@@ -52,7 +41,21 @@
                 </div>
             </a>
         </div>
+        @if (Auth::user()->role == "admin")    
+            <div class="col-6 col-xl-3">
+                <a class="block block-link-shadow text-right" href="javascript:void(0)">
+                    <div class="block-content block-content-full clearfix">
+                        <div class="float-left mt-10 d-none d-sm-block">
+                            <i class="si si-users fa-3x text-body-bg-dark"></i>
+                        </div>
+                        <div class="font-size-sm font-w600 text-uppercase text-muted">Jumlah Rw</div>
+                        <div class="font-size-h4">{{count($rw)}}</div>
+                    </div>
+                </a>
+            </div>
+        @endif
         </div>
+        {{-- {{Auth::user()}} --}}
     <!-- FULL TABLE -->
         <div class="block">
             <div class="block-header block-header-default">
