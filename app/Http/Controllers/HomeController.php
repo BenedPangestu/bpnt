@@ -7,29 +7,13 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function realisasi()
     {
-        $this->middleware('auth');
-    }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function index()
-    {
-        
         $data = ([
             'title'=> 'kecamatan',
-            'masyarakat' => masyarakat::all(),
+            'masyarakat' => masyarakat::where('status', 'lolos')->get(),
             // 'request' => $request->nama,
         ]);
-        return view('pages/admin/dashboard', $data);
+        return view('pages/home', $data);
     }
 }

@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return redirect()->to('login');
 });
-// Route::get('/login', 'AuthController@index');
+Route::get('/realisasi', ['as' => 'realisasi', 'uses' => 'HomeController@realisasi']);
 // Route::post('/login/auth', ['as'=> 'login.session', 'uses'=>'AuthController@login']);
 // Route::get('/logout', ['as'=> 'logout', 'uses'=>'AuthController@login']);
 
