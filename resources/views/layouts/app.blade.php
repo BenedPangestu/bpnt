@@ -23,7 +23,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="background-color: #31a090;">
             <div class="container">
                 {{-- <label for="">Kelurahan Kayu Manis</label> --}}
                 <a class="navbar-brand" href="{{ url('/') }}">Kelurahan Kayu Manis</a>

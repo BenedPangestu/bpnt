@@ -11,7 +11,7 @@
         {{-- {{Auth::user()}} --}}
     <!-- FULL TABLE -->
         <div class="block"> 
-            <div class="block-header block-header-default">
+            <div class="block-header" style="background-color: #26b79e">
             <h3 class="block-title">Data calon BPNT/KPM</h3>
             </div>
             <div class="block-content">

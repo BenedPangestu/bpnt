@@ -64,7 +64,7 @@ Task 30 juli :
 10. data rw action cetak data belum berfungsi ✔
 11. form no telp di rw ✔
 12. close di form data rw ✔
-13. data yang notif nya belum terisi jangan dulu masuk db
+13. data yang notif nya belum terisi jangan dulu masuk db ✔
 14. watermark di bawah hapus aja ✔
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
