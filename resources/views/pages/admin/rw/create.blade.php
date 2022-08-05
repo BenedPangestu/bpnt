@@ -76,7 +76,7 @@
                                             <div class="form-group row">
                                                 <label class="col-lg-4 col-form-label" for="val-suggestions">Alamat <span class="text-danger">*</span></label>
                                                 <div class="col-lg-8">
-                                                    <textarea class="form-control" id="val-suggestions" name="alamat" rows="5" placeholder="Masukan isi alamat lengkap..">{{old('pekerjaan')}}</textarea>
+                                                    <textarea class="form-control" id="val-suggestions" name="alamat" rows="5" placeholder="Masukan isi alamat lengkap..">{{old('alamat')}}</textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -109,7 +109,7 @@
                                             </div>
                                             <div class="modal-footer">
                                                 {{-- <a href="" type="button" class="btn btn-alt-secondary" data-dismiss="modal">Close</a> --}}
-                                                <a href="{{url()->previous()}}" type="button" class="btn btn-alt-secondary" data-dismiss="modal">Back</a>
+                                                <a href="{{route('user.rw')}}" type="button" class="btn btn-alt-secondary" data-dismiss="modal">Back</a>
                                                 <button type="submit" class="btn btn-alt-success" data-dismiss="modal">
                                                     <i class="fa fa-check"></i> Tambah Data
                                                 </button>
