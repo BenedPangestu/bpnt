@@ -36,6 +36,12 @@
                             </div>
                         </div>
                         <div class="form-group row">
+                            <label class="col-lg-4 col-form-label"  >Password Baru<span class="text-danger">*</span></label>
+                            <div class="col-lg-8">
+                                <input type="text" class="form-control" name="password" placeholder="Enter a password baru.." value="">
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label class="col-lg-4 col-form-label" for="val-suggestions">Alamat <span class="text-danger">*</span></label>
                             <div class="col-lg-8">
                                 <textarea class="form-control" id="val-suggestions" name="alamat" rows="5" 

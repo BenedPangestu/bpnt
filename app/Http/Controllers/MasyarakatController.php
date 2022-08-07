@@ -68,8 +68,8 @@ class MasyarakatController extends Controller
         $data = ([
             'title'=> 'Masyarakat',
             'masyarakat' => $dataMas,
-            'login' => Auth::user()
-            // 'request' => $request->nama_masyarakat,
+            'login' => Auth::user(),
+            'masyarakatValue' => masyarakat::all(),
             // 'url' => $request->segment(3),
         ]);
         // dd($data);
@@ -107,17 +107,34 @@ class MasyarakatController extends Controller
     public function dataApprove(Request $request)
     {
         if (auth::user()->role == "admin") {
-            $dataMas = masyarakat::where('status', 'approve')->Orwhere('status', 'lolos')->orderBy('status', 'desc')->get();
+            // $dataMas = masyarakat::where('status', 'approve')->Orwhere('status', 'lolos')->orderBy('status', 'desc')->get();
             // $dataLolos = masyarakat::where('status', 'lolos')->get();
             // $dataMas = array_merge($dataApp, $dataLolos);
+            $rt = $request->rt;
+            $rw = $request->rw;
+            if ($rt != null && $rw != null) {
+                $dataApp = masyarakat::where(['rt' => $rt, 'rw' => $rw,'status' => 'approve'])->get();
+                $dataLos = masyarakat::where(['rt' => $rt, 'rw' => $rw,'status' => 'lolos'])->get();
+                $arrApp = array($dataApp);
+                $arrLos = array($dataLos);
+                $dataMas = array_merge($arrApp, $arrLos);
+                dd($dataMas);
+            } elseif($rt != null){
+                $dataMas = masyarakat::where('rt' , $rt)->where('status', 'approve')->Orwhere('status', 'lolos')->get();
+            } elseif ($rw != null) {
+                $dataMas = masyarakat::where('rw' , $rw)->where('status', 'approve')->Orwhere('status', 'lolos')->get();
+            }
+            else {
+                $dataMas = masyarakat::where('status', 'approve')->Orwhere('status', 'lolos')->get();
+            }
         } else {
             $dataMas = masyarakat::where(['status'=> 'approve', 'rw' => auth::user()->ketua_rw])->Orwhere('status', 'lolos')->orderBy('status', 'desc')->get();
         }
         $data = ([
             'title'=> 'Masyarakat',
             'masyarakat' => $dataMas,
-            'login' => Auth::user()
-            // 'request' => $request->nama_masyarakat,
+            'login' => Auth::user(),
+            'masyarakatValue' => masyarakat::all(),
             // 'url' => $request->segment(3),
         ]);
         return view('pages/admin/masyarakat/approve', $data);

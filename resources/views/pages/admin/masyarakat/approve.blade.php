@@ -12,6 +12,59 @@
             @if (Auth::user()->role == "rw")
                 {{-- <a href="{{Route('masyarakat.create')}}" type="button" class="btn btn-primary" >Tambah Data</a> --}}
             @endif
+            @foreach ($masyarakatValue as $item)
+                <?php
+                    $arr[] = $item->rt; 
+                    $rtt[] = $item->rw;
+                ?>
+            @endforeach
+            <?php 
+                $array = array_unique($arr);
+                $arrayRt = array_unique($rtt);
+            ?>
+            <div class="block-title row" style="justify-content: center;" style="align-content: center">
+                <form class="row" action="{{route('masyarakat.approve')}}" method="get">
+                    <div class=" row">
+                        <label class="col-lg-2 col-form-label"  >Rt</label>
+                        <div class="col-lg-8">
+                            <select class="js-select2 form-control" id="" name="rt" style="width: 100%;" data-placeholder="Choose one..">
+                                <option value="" selected></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                                @foreach ($array as $value)
+                                {{-- {{dd($item->rt)}} --}}
+                                <?php 
+                                // $array = array_unique($item->rt);
+                                    // print_r($item->rt);
+                                    ?>
+                                    <option value="{{$value}}">{{$value}}</option>
+                                    {{-- <option value="perempuan">perempuan</option> --}}
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class=" row">
+                        <label class="col-lg-2 col-form-label"  >Rw</label>
+                        <div class="col-lg-8">
+                            <select class="js-select2 form-control" id="" name="rw" style="width: 100%;" data-placeholder="Choose one..">
+                                <option value="" selected></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                                @foreach ($arrayRt as $value)
+                                {{-- {{dd($item->rt)}} --}}
+                                <?php 
+                                // $array = array_unique($item->rt);
+                                    // print_r($item->rt);
+                                    ?>
+                                    <option value="{{$value}}">{{$value}}</option>
+                                    {{-- <option value="perempuan">perempuan</option> --}}
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <button class="btn btn-primary btn-sm ml-4" style="" type="submit">Submit</button>
+                        <a class="btn btn-secondary ml-4"  style="align-items: center" type="button" href="{{route('realisasi')}}">Reset</a>
+                    </div>
+                </form>
+            </div>
             <a href="{{Route('masyarakat.cetak')}}" type="button" class="btn btn-info" >Cetak Data</a>
         
         </div>
