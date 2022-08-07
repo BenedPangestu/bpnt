@@ -41,27 +41,29 @@
                             </select>
                         </div>
                     </div>
-                    <div class=" row">
-                        <label class="col-lg-2 col-form-label"  >Rw</label>
-                        <div class="col-lg-8">
-                            <select class="js-select2 form-control" id="" name="rw" style="width: 100%;" data-placeholder="Choose one..">
-                                <option value="" selected></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
-                                @foreach ($arrayRt as $value)
-                                {{-- {{dd($item->rt)}} --}}
-                                <?php 
-                                // $array = array_unique($item->rt);
-                                    // print_r($item->rt);
-                                    ?>
-                                    <option value="{{$value}}">{{$value}}</option>
-                                    {{-- <option value="perempuan">perempuan</option> --}}
-                                @endforeach
-                            </select>
+                    @if (Auth::user()->role == 'admin')    
+                        <div class=" row">
+                            <label class="col-lg-2 col-form-label"  >Rw</label>
+                            <div class="col-lg-8">
+                                <select class="js-select2 form-control" id="" name="rw" style="width: 100%;" data-placeholder="Choose one..">
+                                    <option value="" selected></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                                    @foreach ($arrayRt as $value)
+                                    {{-- {{dd($item->rt)}} --}}
+                                    <?php 
+                                    // $array = array_unique($item->rt);
+                                        // print_r($item->rt);
+                                        ?>
+                                        <option value="{{$value}}">{{$value}}</option>
+                                        {{-- <option value="perempuan">perempuan</option> --}}
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
-                    </div>
+                    @endif
                     <div class="row">
 
                         <button class="btn btn-primary btn-sm ml-4" style="" type="submit">Submit</button>
-                        <a class="btn btn-secondary ml-4"  style="align-items: center" type="button" href="{{route('realisasi')}}">Reset</a>
+                        <a class="btn btn-secondary ml-4"  style="align-items: center" type="button" href="{{route('masyarakat.approve')}}">Reset</a>
                     </div>
                 </form>
             </div>

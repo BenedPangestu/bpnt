@@ -104,31 +104,45 @@ class MasyarakatController extends Controller
         $dataMas = HistoryMasyarakat::with('masyarakat')->where('id_masyarakat', $id)->get();
         return json_encode($dataMas);
     }
-    public function dataApprove(Request $request)
+    public function filterRtRw($rt, $rw)
     {
-        if (auth::user()->role == "admin") {
-            // $dataMas = masyarakat::where('status', 'approve')->Orwhere('status', 'lolos')->orderBy('status', 'desc')->get();
-            // $dataLolos = masyarakat::where('status', 'lolos')->get();
-            // $dataMas = array_merge($dataApp, $dataLolos);
-            $rt = $request->rt;
-            $rw = $request->rw;
+        if (auth::user()->role == 'admin') {
             if ($rt != null && $rw != null) {
-                $dataApp = masyarakat::where(['rt' => $rt, 'rw' => $rw,'status' => 'approve'])->get();
-                $dataLos = masyarakat::where(['rt' => $rt, 'rw' => $rw,'status' => 'lolos'])->get();
-                $arrApp = array($dataApp);
-                $arrLos = array($dataLos);
-                $dataMas = array_merge($arrApp, $arrLos);
-                dd($dataMas);
+                $dataMas = masyarakat::whereIn('status' ,['approve', 'lolos'])->where(['rt' => $rt, 'rw' => $rw])->get();
             } elseif($rt != null){
-                $dataMas = masyarakat::where('rt' , $rt)->where('status', 'approve')->Orwhere('status', 'lolos')->get();
-            } elseif ($rw != null) {
-                $dataMas = masyarakat::where('rw' , $rw)->where('status', 'approve')->Orwhere('status', 'lolos')->get();
+                $dataMas = masyarakat::whereIn('status' ,['approve', 'lolos'])->where(['rt' => $rt])->get();
+            } elseif ($rw != null && $rt == null) {
+                $dataMas = masyarakat::whereIn('status' ,['approve', 'lolos'])->where(['rw' => $rw])->get();
             }
             else {
-                $dataMas = masyarakat::where('status', 'approve')->Orwhere('status', 'lolos')->get();
+                $dataMas = masyarakat::whereIn('status', ['approve', 'lolos'])->get();
             }
         } else {
-            $dataMas = masyarakat::where(['status'=> 'approve', 'rw' => auth::user()->ketua_rw])->Orwhere('status', 'lolos')->orderBy('status', 'desc')->get();
+            if ($rt != null && $rw != null) {
+                $dataMas = masyarakat::whereIn('status' ,['approve', 'lolos'])->where(['rt' => $rt, 'rw' => auth::user()->ketua_rw])->get();
+            } elseif($rt != null){
+                $dataMas = masyarakat::whereIn('status' ,['approve', 'lolos'])->where(['rt' => $rt, 'rw' => auth::user()->ketua_rw])->get();
+            } elseif ($rw != null && $rt == null) {
+                $dataMas = masyarakat::whereIn('status' ,['approve', 'lolos'])->where(['rw' => $rw])->get();
+            }
+            else {
+                $dataMas = masyarakat::whereIn('status', ['approve', 'lolos'])->where('rw', auth::user()->ketua_rw)->get();
+            }
+            // $dataMas = masyarakat::where(['status'=> 'approve', 'rw' => auth::user()->ketua_rw])->Orwhere('status', 'lolos')->orderBy('status', 'desc')->get();
+        }
+        
+        return $dataMas;
+    }
+    public function dataApprove(Request $request)
+    {
+        $rt = $request->rt;
+        $rw = $request->rw;
+        if (auth::user()->role == "admin") {
+            $dataMas = $this->filterRtRw($rt, $rw);
+        } else {
+            $dataMas = $this->filterRtRw($rt, $rw);
+            // dd($dataMas);
+            // $dataMas = masyarakat::where(['status'=> 'approve', 'rw' => auth::user()->ketua_rw])->Orwhere('status', 'lolos')->orderBy('status', 'desc')->get();
         }
         $data = ([
             'title'=> 'Masyarakat',
