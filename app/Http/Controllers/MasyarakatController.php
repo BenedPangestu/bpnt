@@ -59,12 +59,14 @@ class MasyarakatController extends Controller
     }
     public function data(Request $request)
     {
-        if (Auth::user()->role == "admin") {
-            $dataMas = masyarakat::where('status', 'peserta')->orderBy('id', 'desc')->get();
-        }else {
-            $dataMas = masyarakat::where('rw', auth::user()->ketua_rw)->where('status', 'peserta')->orderBy('id', 'desc')->get();
-        }
-
+        $rt = $request->rt;
+        $rw = $request->rw;
+        // if (Auth::user()->role == "admin") {
+        //     $dataMas = masyarakat::where('status', 'peserta')->orderBy('id', 'desc')->get();
+        // }else {
+        //     $dataMas = masyarakat::where('rw', auth::user()->ketua_rw)->where('status', 'peserta')->orderBy('id', 'desc')->get();
+        // }
+        $dataMas = $this->filterRtRw($rt, $rw, ['peserta']);
         $data = ([
             'title'=> 'Masyarakat',
             'masyarakat' => $dataMas,
@@ -104,29 +106,29 @@ class MasyarakatController extends Controller
         $dataMas = HistoryMasyarakat::with('masyarakat')->where('id_masyarakat', $id)->get();
         return json_encode($dataMas);
     }
-    public function filterRtRw($rt, $rw)
+    protected function filterRtRw($rt, $rw, $status = [])
     {
         if (auth::user()->role == 'admin') {
             if ($rt != null && $rw != null) {
-                $dataMas = masyarakat::whereIn('status' ,['approve', 'lolos'])->where(['rt' => $rt, 'rw' => $rw])->get();
+                $dataMas = masyarakat::whereIn('status' ,$status)->where(['rt' => $rt, 'rw' => $rw])->get();
             } elseif($rt != null){
-                $dataMas = masyarakat::whereIn('status' ,['approve', 'lolos'])->where(['rt' => $rt])->get();
+                $dataMas = masyarakat::whereIn('status' ,$status)->where(['rt' => $rt])->get();
             } elseif ($rw != null && $rt == null) {
-                $dataMas = masyarakat::whereIn('status' ,['approve', 'lolos'])->where(['rw' => $rw])->get();
+                $dataMas = masyarakat::whereIn('status' ,$status)->where(['rw' => $rw])->get();
             }
             else {
-                $dataMas = masyarakat::whereIn('status', ['approve', 'lolos'])->get();
+                $dataMas = masyarakat::whereIn('status', $status)->get();
             }
         } else {
             if ($rt != null && $rw != null) {
-                $dataMas = masyarakat::whereIn('status' ,['approve', 'lolos'])->where(['rt' => $rt, 'rw' => auth::user()->ketua_rw])->get();
+                $dataMas = masyarakat::whereIn('status' ,$status)->where(['rt' => $rt, 'rw' => auth::user()->ketua_rw])->get();
             } elseif($rt != null){
-                $dataMas = masyarakat::whereIn('status' ,['approve', 'lolos'])->where(['rt' => $rt, 'rw' => auth::user()->ketua_rw])->get();
+                $dataMas = masyarakat::whereIn('status' ,$status)->where(['rt' => $rt, 'rw' => auth::user()->ketua_rw])->get();
             } elseif ($rw != null && $rt == null) {
-                $dataMas = masyarakat::whereIn('status' ,['approve', 'lolos'])->where(['rw' => $rw])->get();
+                $dataMas = masyarakat::whereIn('status' ,$status)->where(['rw' => $rw])->get();
             }
             else {
-                $dataMas = masyarakat::whereIn('status', ['approve', 'lolos'])->where('rw', auth::user()->ketua_rw)->get();
+                $dataMas = masyarakat::whereIn('status', $status)->where('rw', auth::user()->ketua_rw)->get();
             }
             // $dataMas = masyarakat::where(['status'=> 'approve', 'rw' => auth::user()->ketua_rw])->Orwhere('status', 'lolos')->orderBy('status', 'desc')->get();
         }
@@ -138,9 +140,9 @@ class MasyarakatController extends Controller
         $rt = $request->rt;
         $rw = $request->rw;
         if (auth::user()->role == "admin") {
-            $dataMas = $this->filterRtRw($rt, $rw);
+            $dataMas = $this->filterRtRw($rt, $rw, ['approve', 'lolos']);
         } else {
-            $dataMas = $this->filterRtRw($rt, $rw);
+            $dataMas = $this->filterRtRw($rt, $rw, ['approve', 'lolos']);
             // dd($dataMas);
             // $dataMas = masyarakat::where(['status'=> 'approve', 'rw' => auth::user()->ketua_rw])->Orwhere('status', 'lolos')->orderBy('status', 'desc')->get();
         }
