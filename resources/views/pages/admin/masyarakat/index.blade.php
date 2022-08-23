@@ -59,7 +59,7 @@
                     @endif
                     <div class="row">
                         <button class="btn btn-primary btn-sm ml-4" style="max-height: 30px" type="submit">Submit</button>
-                        <a class="btn btn-sm btn-secondary ml-4"  style="max-height: 30px" type="button" href="{{route('realisasi')}}">Reset</a>
+                        <a class="btn btn-sm btn-secondary ml-4"  style="max-height: 30px" type="button" href="{{route('masyarakat.daftar')}}">Reset</a>
                     </div>
                 </form>
             </div>
@@ -132,7 +132,7 @@
                                         <div class="btn-group">
                                             <form action="{{route('masyarakat.pend', $item->id)}}" method="post">
                                                 @csrf
-                                                <button type="submit" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Pending">
+                                                <button type="submit" class="btn btn-sm btn-secondary" onclick="return confirm('Apakah Anda Yakin Pending Data?');" data-toggle="tooltip" title="Pending">
                                                     <i class="fa fa-times"></i>
                                                 </button>
                                             </form>
@@ -140,7 +140,7 @@
                                         <div class="btn-group">
                                             <form action="{{route('masyarakat.app', $item->id)}}" method="post">
                                                 @csrf
-                                                <button type="submit" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Approve">
+                                                <button type="submit" class="btn btn-sm btn-secondary" onclick="return confirm('Apakah Anda Yakin Approve Data?');" data-toggle="tooltip" title="Approve">
                                                     <i class="fa fa-check"></i>
                                                 </button>
                                             </form>

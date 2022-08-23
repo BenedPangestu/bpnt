@@ -78,6 +78,12 @@ task 5 agustus :
     data realisasi, ketika di rw data rt hungkul ✔
 8. notifikasi konfirmasi hapus data ✔ 
 
+task 23 agustus :
+1. no kk unique ✔
+2. button reset calon ✔ 
+3. form nik, no kk, dan no hp khusus number ✔
+4. semua aksi dengan pop-up ✔
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">

@@ -297,8 +297,8 @@ class MasyarakatController extends Controller
             'tempat_lahir' => 'required',
             'tanggal_lahir' => 'required',
             'rt' => 'required',
-            'nik' => 'required|unique:tbl_masyarakat',
-            'no_kk' => 'required',
+            'nik' => 'required|unique:tbl_masyarakat|numeric',
+            'no_kk' => 'required|unique:tbl_masyarakat|numeric',
             'jenis_kelamin' => 'required',
             'pekerjaan' => 'required',
             'agama' => 'required',
@@ -364,6 +364,28 @@ class MasyarakatController extends Controller
     public function update($id, Request $request)
     {
         $data = masyarakat::find($id);
+        $dataId = $data['id'];
+        $request->validate([
+            'nama' => 'required',
+            'alamat' => 'required',
+            'tempat_lahir' => 'required',
+            'tanggal_lahir' => 'required',
+            'rt' => 'required',
+            'nik' => 'required|numeric|unique:tbl_masyarakat',
+            'no_kk' => 'required|unique:tbl_masyarakat|numeric',
+            'jenis_kelamin' => 'required',
+            'pekerjaan' => 'required',
+            'agama' => 'required',
+            'luas_bangunan' => 'required',
+            'jenis_atap' => 'required',
+            'jenis_lantai' => 'required',
+            'jenis_dinding' => 'required',
+            'sumber_listrik' => 'required',
+            'sumber_air_minum' => 'required',
+            'bahan_masak' => 'required',
+            'fasilitas_wc' => 'required',
+            'lahan_tinggal' => 'required'
+        ]);
 
         $data->nama = $request->nama;
         $data->alamat = $request->alamat;

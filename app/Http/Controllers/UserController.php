@@ -45,7 +45,7 @@ class UserController extends Controller
             // 'role' =>'required',
             'agama' => 'required',
             'username' => 'required',
-            'email' => ['required', 'email', 'max:255'],
+            'email' => ['required', 'email', 'max:255', 'numeric'],
             'password' => ['required', 'min:8'],
             'jenis_kelamin' => 'required',
             'alamat' => 'required',

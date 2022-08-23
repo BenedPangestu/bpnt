@@ -10,6 +10,26 @@
         <div class="block-header block-header-default">
             <h3 class="block-title">Edit Data</h3>
         </div>
+        @if ($message = session('success'))
+        <div class="alert alert-success">
+            <p>{{ $message }}</p>
+        </div>
+        @endif 
+        @if ($message = session('fail'))
+        <div class="alert alert-danger">
+            <p>{{ $message }}</p>
+        </div>
+        @endif
+        @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                <strong>Whoops!</strong> There were some problems with your input.
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <div class="block-content">
             <div class="row justify-content-center py-20">
                 <div class="col-xl-8">
@@ -177,7 +197,7 @@
                         </div>
                         <div class="modal-footer">
                             <a href="{{url()->previous()}}" type="button" class="btn btn-alt-secondary" data-dismiss="modal">Back</a>
-                            <button type="submit" class="btn btn-alt-success" data-dismiss="modal">
+                            <button type="submit" class="btn btn-alt-success" onclick="return confirm('Apakah Anda Yakin Update Data?');" data-dismiss="modal">
                                 <i class="fa fa-check"></i> Update Data
                             </button>
                         </form>
@@ -185,12 +205,12 @@
                             @if ($user->status == "calon")
                                 <form action="{{route('masyarakat.calpes', $user->id)}}" method="POST">
                                     @csrf
-                                    <button type="submit" class="btn btn-alt-info" data-dismiss="modal">Jadikan Peserta</button>
+                                    <button type="submit" class="btn btn-alt-info" onclick="return confirm('Apakah Anda Yakin Jadikan Peserta Data?');" data-dismiss="modal">Jadikan Peserta</button>
                                 </form>
                             @else
                                 <form action="{{route('masyarakat.app', $user->id)}}" method="POST">
                                     @csrf
-                                    <button type="submit" class="btn btn-alt-info" data-dismiss="modal">Approve</button>
+                                    <button type="submit" class="btn btn-alt-info" onclick="return confirm('Apakah Anda Yakin Approve Data?');" data-dismiss="modal">Approve</button>
                                 </form>
                             @endif
                             {{-- <a href="{{route('masyarakat.app', $user->id)}}" class="btn btn-alt-secondary">app</a> --}}
